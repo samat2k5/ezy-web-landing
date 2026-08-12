@@ -59,37 +59,37 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
                 <div>
                   <span className="text-2xl font-black text-blue-600 font-mono block mb-2">{s.step}</span>
                   <h4 className="text-xs font-bold text-slate-900 mb-1">{s.title}</h4>
-                  <p className="text-[11px] text-slate-500 leading-tight">{s.desc}</p>
+                  <p className="text-[11px] text-slate-500 leading-tight font-medium">{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Statutory Features Panel */}
-        <div className="bg-slate-950 text-white p-7 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+        {/* Crisp Light Statutory Features Panel */}
+        <div className="bg-white text-slate-900 p-7 sm:p-10 rounded-3xl border border-slate-200 shadow-2xl">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
             <div>
-              <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                <Landmark className="w-5 h-5 text-emerald-400" /> Supports Singapore Statutory Payroll Requirements
+              <h3 className="text-xl font-bold text-slate-950 flex items-center gap-2">
+                <Landmark className="w-5 h-5 text-emerald-600" /> Supports Singapore Statutory Payroll Requirements
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 font-medium mt-1">
                 Built around Singapore statutory requirements for CPF contributions, SDL levies, SHG funds, and IRAS tax filing.
               </p>
             </div>
             
-            <div className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-xl text-xs font-extrabold">
+            <div className="px-4 py-1.5 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-extrabold">
               Itemized Payslip Standard
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {statutoryComponents.map((comp, idx) => (
-              <div key={idx} className="p-4.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-start gap-3">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div key={idx} className="p-4.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-start gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-white">{comp.name}</h4>
-                  <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{comp.detail}</p>
+                  <h4 className="text-xs font-bold text-slate-950">{comp.name}</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed font-medium">{comp.detail}</p>
                 </div>
               </div>
             ))}
