@@ -78,7 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
           </div>
         </div>
 
-        {/* Oversized Product Hero Dashboard (70% Visual Area with Overlapping UI Panels) */}
+        {/* Oversized Light SaaS Product Hero Dashboard (70% Visual Area with Crisp Light Theme) */}
         <div className="mt-16 lg:mt-24 max-w-6xl mx-auto relative">
           
           {/* Overlapping Floating Status Badge 1: Top Right */}
@@ -99,24 +99,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
             <span>AI Anomaly Checked</span>
           </div>
 
-          <div className="relative rounded-3xl bg-slate-950 border border-slate-800 shadow-hero-shadow overflow-hidden group">
+          <div className="relative rounded-3xl bg-white border border-slate-200/90 shadow-2xl overflow-hidden group">
             
             {/* Browser Frame Bar */}
-            <div className="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+            <div className="bg-slate-100/90 px-6 py-4 border-b border-slate-200 flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                <span className="w-3 h-3 rounded-full bg-red-400" />
+                <span className="w-3 h-3 rounded-full bg-amber-400" />
+                <span className="w-3 h-3 rounded-full bg-emerald-400" />
                 
                 {/* Official Logo Brand Indicator */}
-                <div className="ml-4 pl-4 border-l border-slate-800 flex items-center gap-2.5">
+                <div className="ml-4 pl-4 border-l border-slate-300 flex items-center gap-2.5">
                   <img 
                     src={getLogoPath('icon')} 
                     onError={(e) => handleImageError(e, 'Logos/logo-icon.png')}
                     alt="ezyHR Icon" 
                     className="h-5 w-auto" 
                   />
-                  <span className="text-xs font-mono text-slate-400 hidden sm:inline-block">
+                  <span className="text-xs font-mono text-slate-600 font-medium hidden sm:inline-block">
                     https://app.ezy.sg/dashboard
                   </span>
                 </div>
@@ -124,52 +124,52 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
 
               {/* DEMO DATA Label */}
               <div className="flex items-center gap-3">
-                <span className="px-3 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold tracking-wider border border-emerald-500/30">
+                <span className="px-3 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-extrabold tracking-wider border border-emerald-200">
                   DEMO DATA
                 </span>
-                <span className="text-xs text-slate-400 hidden sm:inline-block font-medium">
+                <span className="text-xs text-slate-600 hidden sm:inline-block font-bold">
                   Acme Singapore Pte Ltd
                 </span>
               </div>
             </div>
 
             {/* Dashboard Workspace */}
-            <div className="p-6 sm:p-10 bg-slate-950 space-y-6 text-white">
+            <div className="p-6 sm:p-10 bg-white space-y-6 text-slate-900">
               
               {/* Header & Tab Selector */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-3">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-950 flex items-center gap-3">
                     Executive HR & Statutory Payroll Workspace
-                    <span className="text-xs font-normal text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+                    <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
                       August 2026 Batch
                     </span>
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">Unified Workforce, Statutory Payroll & Live Attendance Radar</p>
+                  <p className="text-xs text-slate-500 font-medium mt-1">Unified Workforce, Statutory Payroll & Live Attendance Radar</p>
                 </div>
 
                 {/* Tab Controls */}
-                <div className="flex items-center space-x-1.5 bg-slate-900 p-1.5 rounded-2xl border border-slate-800">
+                <div className="flex items-center space-x-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
                   <button
                     onClick={() => setActiveTab('overview')}
-                    className={`px-4.5 py-2.5 text-xs font-semibold rounded-xl transition-all ${
-                      activeTab === 'overview' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-extrabold shadow-md' : 'text-slate-400 hover:text-white'
+                    className={`px-4.5 py-2.5 text-xs font-bold rounded-xl transition-all ${
+                      activeTab === 'overview' ? 'bg-slate-950 text-white shadow-sm' : 'text-slate-600 hover:text-slate-950'
                     }`}
                   >
                     Workforce Overview
                   </button>
                   <button
                     onClick={() => setActiveTab('payroll')}
-                    className={`px-4.5 py-2.5 text-xs font-semibold rounded-xl transition-all ${
-                      activeTab === 'payroll' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-extrabold shadow-md' : 'text-slate-400 hover:text-white'
+                    className={`px-4.5 py-2.5 text-xs font-bold rounded-xl transition-all ${
+                      activeTab === 'payroll' ? 'bg-slate-950 text-white shadow-sm' : 'text-slate-600 hover:text-slate-950'
                     }`}
                   >
                     Payroll Status
                   </button>
                   <button
                     onClick={() => setActiveTab('attendance')}
-                    className={`px-4.5 py-2.5 text-xs font-semibold rounded-xl transition-all ${
-                      activeTab === 'attendance' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-extrabold shadow-md' : 'text-slate-400 hover:text-white'
+                    className={`px-4.5 py-2.5 text-xs font-bold rounded-xl transition-all ${
+                      activeTab === 'attendance' ? 'bg-slate-950 text-white shadow-sm' : 'text-slate-600 hover:text-slate-950'
                     }`}
                   >
                     Attendance Radar
@@ -182,58 +182,58 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
                 <div className="space-y-6 animate-fadeIn">
                   {/* Top 4 Primary Metrics */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                      <div className="flex items-center justify-between text-slate-400 mb-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Active Headcount</span>
-                        <Users className="w-4 h-4 text-indigo-400" />
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                      <div className="flex items-center justify-between text-slate-500 mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Active Headcount</span>
+                        <Users className="w-4 h-4 text-indigo-600" />
                       </div>
-                      <div className="text-2xl font-extrabold text-white">{DEMO_DASHBOARD_STATS.activeEmployees} Staff</div>
-                      <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+                      <div className="text-2xl font-black text-slate-950">{DEMO_DASHBOARD_STATS.activeEmployees} Staff</div>
+                      <span className="text-[11px] text-emerald-600 font-bold flex items-center gap-1 mt-1">
                         <TrendingUp className="w-3.5 h-3.5" /> +4 this month
                       </span>
                     </div>
 
-                    <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                      <div className="flex items-center justify-between text-slate-400 mb-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Gross Payroll Outlay</span>
-                        <DollarSign className="w-4 h-4 text-blue-400" />
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                      <div className="flex items-center justify-between text-slate-500 mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Gross Payroll Outlay</span>
+                        <DollarSign className="w-4 h-4 text-blue-600" />
                       </div>
-                      <div className="text-2xl font-extrabold text-white">{DEMO_DASHBOARD_STATS.grossPayrollTotal}</div>
-                      <span className="text-[11px] text-slate-400 mt-1 block">CPF & SDL Included</span>
+                      <div className="text-2xl font-black text-slate-950">{DEMO_DASHBOARD_STATS.grossPayrollTotal}</div>
+                      <span className="text-[11px] text-slate-500 mt-1 block font-medium">CPF & SDL Included</span>
                     </div>
 
-                    <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                      <div className="flex items-center justify-between text-slate-400 mb-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Today's Attendance</span>
-                        <Clock className="w-4 h-4 text-cyan-400" />
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                      <div className="flex items-center justify-between text-slate-500 mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Today's Attendance</span>
+                        <Clock className="w-4 h-4 text-cyan-600" />
                       </div>
-                      <div className="text-2xl font-extrabold text-white">{DEMO_DASHBOARD_STATS.attendanceToday}</div>
-                      <span className="text-[11px] text-emerald-400 font-semibold mt-1 block">46 Checked In</span>
+                      <div className="text-2xl font-black text-slate-950">{DEMO_DASHBOARD_STATS.attendanceToday}</div>
+                      <span className="text-[11px] text-emerald-600 font-bold mt-1 block">46 Checked In</span>
                     </div>
 
-                    <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800">
-                      <div className="flex items-center justify-between text-slate-400 mb-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">AI Assistant Status</span>
-                        <Bot className="w-4 h-4 text-purple-400" />
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200/80">
+                      <div className="flex items-center justify-between text-slate-500 mb-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">AI Assistant Status</span>
+                        <Bot className="w-4 h-4 text-purple-600" />
                       </div>
-                      <div className="text-lg font-bold text-purple-400 mt-1">3 Anomaly Alerts</div>
-                      <span className="text-[11px] text-slate-400 mt-1 block">Payroll review required</span>
+                      <div className="text-lg font-bold text-purple-700 mt-1">3 Anomaly Alerts</div>
+                      <span className="text-[11px] text-slate-500 mt-1 block font-medium">Payroll review required</span>
                     </div>
                   </div>
 
                   {/* Representative Data Table */}
-                  <div className="bg-slate-900 rounded-2xl border border-slate-800 p-5 overflow-x-auto">
+                  <div className="bg-slate-50 rounded-2xl border border-slate-200 p-5 overflow-x-auto">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                      <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                         August 2026 Statutory Payroll Summary
                       </h4>
-                      <span className="text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                      <span className="text-xs text-emerald-800 font-bold bg-emerald-100 px-3 py-1 rounded-lg border border-emerald-200">
                         IRAS AIS Export Ready
                       </span>
                     </div>
                     <table className="w-full text-left text-xs">
                       <thead>
-                        <tr className="text-slate-400 border-b border-slate-800 pb-2">
+                        <tr className="text-slate-500 border-b border-slate-200 pb-2 font-bold">
                           <th className="py-2.5">Employee Name</th>
                           <th className="py-2.5">Department</th>
                           <th className="py-2.5">Gross Salary</th>
@@ -241,14 +241,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
                           <th className="py-2.5 text-right">Net Payable</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                      <tbody className="divide-y divide-slate-200 text-slate-700 font-medium">
                         {DEMO_PAYROLL_EMPLOYEES.slice(0, 3).map((emp) => (
                           <tr key={emp.id}>
-                            <td className="py-3 font-semibold text-white">{emp.name}</td>
-                            <td className="py-3 text-slate-400">{emp.department}</td>
-                            <td className="py-3 font-mono">${emp.grossPay.toFixed(2)}</td>
-                            <td className="py-3 font-mono text-slate-400">${emp.employeeCpf} / ${emp.employerCpf}</td>
-                            <td className="py-3 font-mono text-emerald-400 font-bold text-right">${emp.netPay.toFixed(2)}</td>
+                            <td className="py-3 font-bold text-slate-950">{emp.name}</td>
+                            <td className="py-3 text-slate-600">{emp.department}</td>
+                            <td className="py-3 font-mono text-slate-900 font-semibold">${emp.grossPay.toFixed(2)}</td>
+                            <td className="py-3 font-mono text-slate-600">${emp.employeeCpf} / ${emp.employerCpf}</td>
+                            <td className="py-3 font-mono text-emerald-700 font-black text-right">${emp.netPay.toFixed(2)}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -259,29 +259,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
 
               {/* Tab 2: Payroll */}
               {activeTab === 'payroll' && (
-                <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4 animate-fadeIn">
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 animate-fadeIn">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm font-bold text-white">Singapore Statutory Payroll Batch #AUG-2026</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">Includes CPF file, bank GIRO export, and IR8A tax tracking</p>
+                      <h4 className="text-sm font-bold text-slate-950">Singapore Statutory Payroll Batch #AUG-2026</h4>
+                      <p className="text-xs text-slate-500 mt-0.5 font-medium">Includes CPF file, bank GIRO export, and IR8A tax tracking</p>
                     </div>
-                    <span className="px-3.5 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-xl text-xs font-bold">
+                    <span className="px-3.5 py-1.5 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-bold">
                       Calculated & Approved
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block text-xs">Total Net Disbursement:</span>
-                      <span className="text-xl font-extrabold text-emerald-400 font-mono mt-1 block">{DEMO_DASHBOARD_STATS.netPayrollTotal}</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block text-xs font-semibold">Total Net Disbursement:</span>
+                      <span className="text-xl font-black text-emerald-700 font-mono mt-1 block">{DEMO_DASHBOARD_STATS.netPayrollTotal}</span>
                     </div>
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block text-xs">Total CPF Payable:</span>
-                      <span className="text-xl font-extrabold text-blue-400 font-mono mt-1 block">{DEMO_DASHBOARD_STATS.totalCpfContribution}</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block text-xs font-semibold">Total CPF Payable:</span>
+                      <span className="text-xl font-black text-blue-700 font-mono mt-1 block">{DEMO_DASHBOARD_STATS.totalCpfContribution}</span>
                     </div>
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-slate-400 block text-xs">Itemised Mobile Payslips:</span>
-                      <span className="text-xl font-extrabold text-white font-mono mt-1 block">48 Issued</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-slate-500 block text-xs font-semibold">Itemised Mobile Payslips:</span>
+                      <span className="text-xl font-black text-slate-950 font-mono mt-1 block">48 Issued</span>
                     </div>
                   </div>
                 </div>
@@ -289,31 +289,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
 
               {/* Tab 3: Attendance */}
               {activeTab === 'attendance' && (
-                <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4 animate-fadeIn">
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 animate-fadeIn">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm font-bold text-white">Live Attendance Radar</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">Mobile GPS & Web portal check-in logs</p>
+                      <h4 className="text-sm font-bold text-slate-950">Live Attendance Radar</h4>
+                      <p className="text-xs text-slate-500 mt-0.5 font-medium">Mobile GPS & Web portal check-in logs</p>
                     </div>
-                    <span className="text-xs text-emerald-400 font-mono font-bold">Real-time sync</span>
+                    <span className="text-xs text-emerald-700 font-mono font-bold">Real-time sync</span>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-2xl font-extrabold text-emerald-400">46</span>
-                      <span className="block text-xs text-slate-400 mt-1">Clocked In</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-2xl font-black text-emerald-700">46</span>
+                      <span className="block text-xs text-slate-600 font-medium mt-1">Clocked In</span>
                     </div>
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-2xl font-extrabold text-blue-400">2</span>
-                      <span className="block text-xs text-slate-400 mt-1">Approved Leave</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-2xl font-black text-blue-700">2</span>
+                      <span className="block text-xs text-slate-600 font-medium mt-1">Approved Leave</span>
                     </div>
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-2xl font-extrabold text-amber-400">0</span>
-                      <span className="block text-xs text-slate-400 mt-1">Late Arrivals</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-2xl font-black text-amber-600">0</span>
+                      <span className="block text-xs text-slate-600 font-medium mt-1">Late Arrivals</span>
                     </div>
-                    <div className="p-4 bg-slate-950 rounded-xl border border-slate-800">
-                      <span className="text-2xl font-extrabold text-purple-400">1.5 hrs</span>
-                      <span className="block text-xs text-slate-400 mt-1">Avg Overtime</span>
+                    <div className="p-4 bg-white rounded-xl border border-slate-200">
+                      <span className="text-2xl font-black text-purple-700">1.5 hrs</span>
+                      <span className="block text-xs text-slate-600 font-medium mt-1">Avg Overtime</span>
                     </div>
                   </div>
                 </div>

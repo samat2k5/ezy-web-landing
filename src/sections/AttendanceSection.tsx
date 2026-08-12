@@ -66,36 +66,36 @@ export const AttendanceSection: React.FC<AttendanceSectionProps> = ({ onOpenDemo
             </div>
           </div>
 
-          {/* Right Column: Dashboard UI Composition */}
-          <div className="lg:col-span-7 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-white">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          {/* Right Column: Crisp Light Dashboard UI Composition */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-2xl space-y-6 text-slate-900">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-cyan-400" /> Today's Real-time Attendance Radar
+                <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-cyan-600" /> Today's Real-time Attendance Radar
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">Live GPS & Web Portal Sync • August 12, 2026</p>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">Live GPS & Web Portal Sync • August 12, 2026</p>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 text-[10px] font-extrabold border border-cyan-500/30">
+              <span className="px-2.5 py-0.5 rounded bg-cyan-100 text-cyan-800 text-[10px] font-extrabold border border-cyan-200">
                 DEMO DATA
               </span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 text-center">
-              <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800">
-                <span className="text-2xl font-extrabold text-cyan-400">46</span>
-                <span className="block text-xs text-slate-400 mt-1">Clocked In</span>
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-2xl font-black text-cyan-700">46</span>
+                <span className="block text-xs text-slate-600 font-medium mt-1">Clocked In</span>
               </div>
-              <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800">
-                <span className="text-2xl font-extrabold text-blue-400">2</span>
-                <span className="block text-xs text-slate-400 mt-1">On Approved Leave</span>
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-2xl font-black text-blue-700">2</span>
+                <span className="block text-xs text-slate-600 font-medium mt-1">On Approved Leave</span>
               </div>
-              <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800">
-                <span className="text-2xl font-extrabold text-amber-400">0</span>
-                <span className="block text-xs text-slate-400 mt-1">Late Arrivals</span>
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-2xl font-black text-amber-600">0</span>
+                <span className="block text-xs text-slate-600 font-medium mt-1">Late Arrivals</span>
               </div>
-              <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800">
-                <span className="text-2xl font-extrabold text-purple-400">1.5 hrs</span>
-                <span className="block text-xs text-slate-400 mt-1">Avg Overtime</span>
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                <span className="text-2xl font-black text-purple-700">1.5 hrs</span>
+                <span className="block text-xs text-slate-600 font-medium mt-1">Avg Overtime</span>
               </div>
             </div>
           </div>

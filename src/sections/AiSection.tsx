@@ -97,35 +97,35 @@ export const AiSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Interactive Conversational AI Demo Interface */}
-        <div className="max-w-3xl mx-auto bg-slate-950 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8 mb-16 space-y-6 text-white">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Crisp Light Conversational AI Demo Interface */}
+        <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-8 mb-16 space-y-6 text-slate-900">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-2xl bg-violet-500/20 text-violet-400 flex items-center justify-center font-bold">
+              <div className="w-9 h-9 rounded-2xl bg-violet-100 text-violet-700 flex items-center justify-center font-bold">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white">ezyHR AI Assistant Workspace</h3>
-                <span className="text-[11px] text-slate-400">Click a sample question below to test AI queries</span>
+                <h3 className="text-sm font-bold text-slate-950">ezyHR AI Assistant Workspace</h3>
+                <span className="text-[11px] text-slate-500 font-medium">Click a sample question below to test AI queries</span>
               </div>
             </div>
-            <span className="px-3 py-0.5 rounded bg-violet-500/20 text-violet-300 text-[10px] font-extrabold tracking-wider border border-violet-500/30">
+            <span className="px-3 py-0.5 rounded bg-violet-100 text-violet-800 text-[10px] font-extrabold tracking-wider border border-violet-200">
               DEMONSTRATION DATA
             </span>
           </div>
 
           {/* Sample Interactive Question Selector Buttons */}
           <div className="space-y-2">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Try Sample AI Prompts:</span>
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Try Sample AI Prompts:</span>
             <div className="flex flex-wrap gap-2">
               {samplePrompts.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => setActivePromptId(p.id)}
-                  className={`text-xs font-semibold px-3 py-1.5 rounded-xl border transition-all text-left ${
+                  className={`text-xs font-semibold px-3.5 py-2 rounded-xl border transition-all text-left ${
                     activePromptId === p.id
-                      ? 'bg-violet-600 text-white border-violet-500 shadow-md ring-1 ring-violet-400/40'
-                      : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700 hover:text-white'
+                      ? 'bg-violet-700 text-white border-violet-700 shadow-sm font-bold'
+                      : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   "{p.question}"
@@ -135,7 +135,7 @@ export const AiSection: React.FC = () => {
           </div>
 
           {/* Active Chat Conversation Area */}
-          <div className="space-y-3.5 pt-2 border-t border-slate-800/80 text-xs animate-fadeIn">
+          <div className="space-y-3.5 pt-2 border-t border-slate-100 text-xs animate-fadeIn">
             {/* User Prompt */}
             <div className="flex items-start justify-end gap-2">
               <div className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white p-3.5 rounded-2xl rounded-tr-none max-w-md font-semibold text-xs sm:text-sm shadow-sm">
@@ -145,15 +145,15 @@ export const AiSection: React.FC = () => {
 
             {/* AI Response */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 font-bold text-xs">
+              <div className="w-8 h-8 rounded-full bg-violet-100 text-violet-800 flex items-center justify-center flex-shrink-0 font-bold text-xs">
                 AI
               </div>
-              <div className="bg-slate-900 text-slate-200 p-4 rounded-2xl rounded-tl-none border border-slate-800 max-w-lg space-y-2 text-xs sm:text-sm shadow-md">
-                <span className="font-bold text-violet-300 block">{activePrompt.responseTitle}</span>
-                <ul className="space-y-1.5 text-slate-300">
+              <div className="bg-slate-50 text-slate-800 p-4 rounded-2xl rounded-tl-none border border-slate-200 max-w-lg space-y-2 text-xs sm:text-sm shadow-xs">
+                <span className="font-bold text-violet-900 block">{activePrompt.responseTitle}</span>
+                <ul className="space-y-1.5 text-slate-700 font-medium">
                   {activePrompt.responseItems.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-violet-400 font-bold">•</span>
+                      <span className="text-violet-600 font-bold">•</span>
                       <span>{item}</span>
                     </li>
                   ))}

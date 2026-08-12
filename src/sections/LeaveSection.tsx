@@ -37,24 +37,24 @@ export const LeaveSection: React.FC<LeaveSectionProps> = ({ onOpenDemo }) => {
         {/* Two-Column Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: UI Team Calendar */}
-          <div className="lg:col-span-7 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl space-y-5 text-white">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          {/* Left Column: Crisp Light UI Team Calendar */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-2xl space-y-5 text-slate-900">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-400 uppercase tracking-wider font-bold">Team Leave Calendar</span>
-                  <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold border border-emerald-500/30">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider font-bold">Team Leave Calendar</span>
+                  <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">
                     DEMO DATA
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-white mt-1">August 2026 Overview</h4>
+                <h4 className="text-base font-bold text-slate-950 mt-1">August 2026 Overview</h4>
               </div>
               
               <div className="flex items-center gap-1.5">
-                <button className="p-2 bg-slate-900 text-slate-400 hover:text-white rounded-xl border border-slate-800">
+                <button className="p-2 bg-slate-50 text-slate-600 hover:text-slate-950 rounded-xl border border-slate-200">
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <button className="p-2 bg-slate-900 text-slate-400 hover:text-white rounded-xl border border-slate-800">
+                <button className="p-2 bg-slate-50 text-slate-600 hover:text-slate-950 rounded-xl border border-slate-200">
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
@@ -62,47 +62,47 @@ export const LeaveSection: React.FC<LeaveSectionProps> = ({ onOpenDemo }) => {
 
             {/* Calendar Event Rows */}
             <div className="space-y-3.5">
-              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+              <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-9 h-9 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs">
                     TW
                   </div>
                   <div>
-                    <span className="font-bold text-white block">Tan Wei Ming</span>
-                    <span className="text-[11px] text-slate-400">Annual Leave (Approved)</span>
+                    <span className="font-bold text-slate-950 block">Tan Wei Ming</span>
+                    <span className="text-[11px] text-slate-600">Annual Leave (Approved)</span>
                   </div>
                 </div>
-                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                <span className="text-xs font-mono text-emerald-800 font-bold bg-emerald-100 px-3 py-1 rounded-lg border border-emerald-200">
                   18 Aug - 20 Aug
                 </span>
               </div>
 
-              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+              <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-9 h-9 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-xs">
                     NH
                   </div>
                   <div>
-                    <span className="font-bold text-white block">Nurul Huda</span>
-                    <span className="text-[11px] text-slate-400">Medical Leave (MC Verified)</span>
+                    <span className="font-bold text-slate-950 block">Nurul Huda</span>
+                    <span className="text-[11px] text-slate-600">Medical Leave (MC Verified)</span>
                   </div>
                 </div>
-                <span className="text-xs font-mono text-amber-400 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20">
+                <span className="text-xs font-mono text-amber-800 font-bold bg-amber-100 px-3 py-1 rounded-lg border border-amber-200">
                   12 Aug (1 Day)
                 </span>
               </div>
 
-              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+              <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-9 h-9 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-xs">
                     KR
                   </div>
                   <div>
-                    <span className="font-bold text-white block">Kavitha R.</span>
-                    <span className="text-[11px] text-slate-400">Childcare Leave (Approved)</span>
+                    <span className="font-bold text-slate-950 block">Kavitha R.</span>
+                    <span className="text-[11px] text-slate-600">Childcare Leave (Approved)</span>
                   </div>
                 </div>
-                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                <span className="text-xs font-mono text-emerald-800 font-bold bg-emerald-100 px-3 py-1 rounded-lg border border-emerald-200">
                   25 Aug (1 Day)
                 </span>
               </div>

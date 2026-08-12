@@ -34,42 +34,42 @@ export const CoreHRSection: React.FC<CoreHRSectionProps> = ({ onOpenDemo }) => {
         {/* Product-Led Showcase Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Product UI Showcase with Floating Fragments */}
-          <div className="lg:col-span-7 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl space-y-5 text-white relative">
+          {/* Left Column: Crisp Light Product UI Showcase */}
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-2xl space-y-5 text-slate-900 relative">
             
             {/* Floating UI Fragment Badge */}
-            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500 text-slate-950 text-xs font-extrabold shadow-lg">
+            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 text-xs font-black shadow-xl">
               <CheckCircle2 className="w-4 h-4 text-slate-950" /> Work Pass Verified
             </div>
 
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4 text-xs">
-              <span className="font-bold text-white flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-400" /> Digital Employee Master Profile
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4 text-xs">
+              <span className="font-bold text-slate-950 flex items-center gap-2">
+                <FileText className="w-4 h-4 text-blue-600" /> Digital Employee Master Profile
               </span>
-              <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">
+              <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">
                 ACTIVE • SC CITIZEN
               </span>
             </div>
 
-            <div className="flex items-center gap-4 bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
               <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white font-black flex items-center justify-center text-lg shadow-md">
                 TW
               </div>
               <div>
-                <h4 className="text-lg font-bold text-white">Tan Wei Ming</h4>
-                <p className="text-xs text-slate-400">Senior Software Engineer • Engineering Dept</p>
-                <span className="text-[11px] text-slate-400 block mt-1 font-mono">Emp ID: SG-2024-0042 • Joined 15 Jan 2022</span>
+                <h4 className="text-lg font-bold text-slate-950">Tan Wei Ming</h4>
+                <p className="text-xs text-slate-600 font-medium">Senior Software Engineer • Engineering Dept</p>
+                <span className="text-[11px] text-slate-500 block mt-1 font-mono">Emp ID: SG-2024-0042 • Joined 15 Jan 2022</span>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-4 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Residency Status</span>
-                <span className="text-white font-semibold mt-1 block">Singapore Citizen</span>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <span className="text-slate-500 block text-[10px] uppercase font-bold">Residency Status</span>
+                <span className="text-slate-950 font-bold mt-1 block">Singapore Citizen</span>
               </div>
-              <div className="p-4 bg-slate-900 rounded-xl border border-slate-800">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Work Pass Expiry</span>
-                <span className="text-emerald-400 font-semibold mt-1 block">N/A (Citizen)</span>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                <span className="text-slate-500 block text-[10px] uppercase font-bold">Work Pass Expiry</span>
+                <span className="text-emerald-700 font-bold mt-1 block">N/A (Citizen)</span>
               </div>
             </div>
           </div>

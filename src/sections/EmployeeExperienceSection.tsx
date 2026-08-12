@@ -72,8 +72,8 @@ export const EmployeeExperienceSection: React.FC = () => {
               </button>
             </div>
 
-            {/* Smartphone Outer Housing */}
-            <div className="w-full max-w-[340px] bg-slate-950 p-5 rounded-[44px] border-4 border-slate-800 shadow-2xl space-y-4 text-white">
+            {/* Smartphone Outer Housing (Sleek Dark Phone Casing + Light SaaS App Screen) */}
+            <div className="w-full max-w-[340px] bg-slate-950 p-5 rounded-[44px] border-4 border-slate-800 shadow-2xl space-y-4 text-slate-900">
               
               {/* Phone Status Bar */}
               <div className="flex justify-between items-center text-[10px] text-slate-400 px-2 pt-1 font-mono">
@@ -82,78 +82,78 @@ export const EmployeeExperienceSection: React.FC = () => {
                 <span>5G 100%</span>
               </div>
 
-              {/* App Header */}
-              <div className="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex items-center justify-between">
+              {/* Light SaaS App Header */}
+              <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center text-xs">
+                  <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-black flex items-center justify-center text-xs">
                     TW
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block">Tan Wei Ming</span>
-                    <span className="text-[10px] text-emerald-400 font-semibold">Senior Engineer</span>
+                    <span className="text-xs font-bold text-slate-950 block">Tan Wei Ming</span>
+                    <span className="text-[10px] text-slate-600 font-semibold">Senior Engineer</span>
                   </div>
                 </div>
-                <span className="text-[9px] font-extrabold px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded border border-emerald-500/30">
+                <span className="text-[9px] font-extrabold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded border border-emerald-200">
                   DEMO DATA
                 </span>
               </div>
 
-              {/* Dynamic Screen View 1: Clock In */}
+              {/* Dynamic Light Screen View 1: Clock In */}
               {mobileTab === 'clockin' && (
                 <div className="space-y-3 animate-fadeIn">
-                  <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-center space-y-2">
-                    <MapPin className="w-8 h-8 text-emerald-400 mx-auto" />
-                    <span className="text-xs font-bold text-white block">Singapore HQ • Office Geo-fence</span>
-                    <span className="text-[11px] text-emerald-400 font-mono block">Clocked In at 08:58 AM</span>
+                  <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm text-center space-y-2">
+                    <MapPin className="w-8 h-8 text-emerald-600 mx-auto" />
+                    <span className="text-xs font-bold text-slate-950 block">Singapore HQ • Office Geo-fence</span>
+                    <span className="text-[11px] text-emerald-700 font-mono block font-bold">Clocked In at 08:58 AM</span>
                   </div>
-                  <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/30 text-center text-xs font-bold text-emerald-400">
+                  <div className="p-3 bg-emerald-100 rounded-xl border border-emerald-200 text-center text-xs font-bold text-emerald-800">
                     Status: On Duty (7.5 hrs logged)
                   </div>
                 </div>
               )}
 
-              {/* Dynamic Screen View 2: Leave */}
+              {/* Dynamic Light Screen View 2: Leave */}
               {mobileTab === 'leave' && (
                 <div className="space-y-3 animate-fadeIn">
-                  <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400">Annual Leave Balance:</span>
-                      <span className="font-bold text-emerald-400 font-mono">14 Days</span>
+                      <span className="text-slate-600 font-medium">Annual Leave Balance:</span>
+                      <span className="font-bold text-emerald-700 font-mono">14 Days</span>
                     </div>
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400">Medical Leave Balance:</span>
-                      <span className="font-bold text-blue-400 font-mono">14 Days</span>
+                      <span className="text-slate-600 font-medium">Medical Leave Balance:</span>
+                      <span className="font-bold text-blue-700 font-mono">14 Days</span>
                     </div>
                   </div>
-                  <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-[11px] text-slate-300">
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 text-[11px] text-slate-700 font-medium">
                     Recent: 18 Aug - 20 Aug Annual Leave (Approved)
                   </div>
                 </div>
               )}
 
-              {/* Dynamic Screen View 3: Payslip */}
+              {/* Dynamic Light Screen View 3: Payslip */}
               {mobileTab === 'payslip' && (
                 <div className="space-y-3 animate-fadeIn">
-                  <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+                  <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="font-bold text-white">Aug 2026 Itemised Payslip</span>
-                      <span className="text-emerald-400 font-bold font-mono">$4,397.00</span>
+                      <span className="font-bold text-slate-950">Aug 2026 Itemised Payslip</span>
+                      <span className="text-emerald-700 font-bold font-mono">$4,397.00</span>
                     </div>
-                    <p className="text-[10px] text-slate-400">Includes Employee CPF (-$1,100) & SHG (-$3)</p>
+                    <p className="text-[10px] text-slate-500 font-medium">Includes Employee CPF (-$1,100) & SHG (-$3)</p>
                   </div>
-                  <div className="p-2.5 bg-purple-500/10 text-purple-300 rounded-xl border border-purple-500/30 text-center text-xs font-bold">
+                  <div className="p-2.5 bg-purple-100 text-purple-900 rounded-xl border border-purple-200 text-center text-xs font-bold">
                     PDF Itemised Payslip Ready
                   </div>
                 </div>
               )}
 
-              {/* Dynamic Screen View 4: Claims */}
+              {/* Dynamic Light Screen View 4: Claims */}
               {mobileTab === 'claims' && (
                 <div className="space-y-3 animate-fadeIn">
-                  <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 text-center space-y-2">
-                    <Camera className="w-8 h-8 text-amber-400 mx-auto" />
-                    <span className="text-xs font-bold text-white block">Client Dinner Receipt Capture</span>
-                    <span className="text-[11px] text-amber-400 font-mono block">$142.50 • Pending Review</span>
+                  <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm text-center space-y-2">
+                    <Camera className="w-8 h-8 text-amber-600 mx-auto" />
+                    <span className="text-xs font-bold text-slate-950 block">Client Dinner Receipt Capture</span>
+                    <span className="text-[11px] text-amber-800 font-mono block font-bold">$142.50 • Pending Review</span>
                   </div>
                 </div>
               )}
