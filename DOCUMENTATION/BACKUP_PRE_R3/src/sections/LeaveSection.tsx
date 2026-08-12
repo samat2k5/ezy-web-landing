@@ -1,0 +1,134 @@
+import React from 'react';
+import { Calendar as CalendarIcon, CheckCircle2, ShieldCheck, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+
+interface LeaveSectionProps {
+  onOpenDemo?: () => void;
+}
+
+export const LeaveSection: React.FC<LeaveSectionProps> = ({ onOpenDemo }) => {
+  const leaveBenefits = [
+    'Real-time statutory leave balance calculation (MOM guidelines)',
+    'Instant mobile & email manager approval notifications',
+    'Shared team leave calendar for workload visibility',
+    'Custom company leave policies & unrecorded leave types',
+    'Automatic sync to statutory Singapore payroll'
+  ];
+
+  return (
+    <section className="py-24 bg-white text-slate-900 relative border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Two-Column Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: UI Team Calendar */}
+          <div className="lg:col-span-7 bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl space-y-5 text-white">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-400 uppercase tracking-wider font-bold">Team Leave Calendar</span>
+                  <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold border border-emerald-500/30">
+                    DEMO DATA
+                  </span>
+                </div>
+                <h4 className="text-base font-bold text-white mt-1">August 2026 Overview</h4>
+              </div>
+              
+              <div className="flex items-center gap-1.5">
+                <button className="p-2 bg-slate-900 text-slate-400 hover:text-white rounded-xl border border-slate-800">
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button className="p-2 bg-slate-900 text-slate-400 hover:text-white rounded-xl border border-slate-800">
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Calendar Event Rows */}
+            <div className="space-y-3.5">
+              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                    TW
+                  </div>
+                  <div>
+                    <span className="font-bold text-white block">Tan Wei Ming</span>
+                    <span className="text-[11px] text-slate-400">Annual Leave (Approved)</span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                  18 Aug - 20 Aug
+                </span>
+              </div>
+
+              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">
+                    NH
+                  </div>
+                  <div>
+                    <span className="font-bold text-white block">Nurul Huda</span>
+                    <span className="text-[11px] text-slate-400">Medical Leave (MC Verified)</span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono text-amber-400 bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20">
+                  12 Aug (1 Day)
+                </span>
+              </div>
+
+              <div className="p-3.5 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">
+                    KR
+                  </div>
+                  <div>
+                    <span className="font-bold text-white block">Kavitha R.</span>
+                    <span className="text-[11px] text-slate-400">Childcare Leave (Approved)</span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                  25 Aug (1 Day)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Copy & Benefits */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-100 border border-teal-200 text-teal-800 text-xs font-bold uppercase tracking-wider">
+              Automated Leave Workflows
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              Leave management without the paperwork.
+            </h2>
+            
+            <p className="text-base text-slate-600 leading-relaxed">
+              Real-time statutory balance tracking, instant manager approval workflows, and team calendar visibility that keeps your business running smoothly.
+            </p>
+
+            <div className="space-y-3 pt-2">
+              {leaveBenefits.map((bullet, idx) => (
+                <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span>{bullet}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-4">
+              <button
+                onClick={onOpenDemo}
+                className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center gap-2"
+              >
+                Explore Leave Module <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+};
