@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Clock, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Zap, Clock, TrendingUp, ArrowRight } from 'lucide-react';
 
 interface BusinessBenefitsSectionProps {
   onOpenDemo?: () => void;
@@ -34,16 +34,16 @@ export const BusinessBenefitsSection: React.FC<BusinessBenefitsSectionProps> = (
   ];
 
   return (
-    <section className="py-24 bg-slate-950 text-white relative border-b border-slate-900 overflow-hidden">
+    <section className="py-28 bg-slate-950 text-white relative border-b border-slate-900 overflow-hidden">
       
-      {/* Soft Multi-colour Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-tr from-emerald-500/15 via-blue-600/15 to-purple-600/15 blur-[160px] rounded-full pointer-events-none" />
+      {/* Soft Multi-colour Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[520px] bg-gradient-to-tr from-emerald-500/15 via-blue-600/15 to-purple-600/15 blur-[170px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             Tangible Business Outcomes
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
@@ -67,13 +67,13 @@ export const BusinessBenefitsSection: React.FC<BusinessBenefitsSectionProps> = (
                 className={`bg-slate-900/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-800 border-l-4 ${item.accent} shadow-2xl hover:border-slate-700 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-8 group`}
               >
                 <div className="flex items-start gap-6 lg:gap-10">
-                  <span className="text-5xl sm:text-7xl font-black font-mono text-slate-700 group-hover:text-emerald-400 transition-colors">
+                  <span className="text-6xl sm:text-8xl font-black font-mono text-slate-700 group-hover:text-emerald-400 transition-colors">
                     {item.num}
                   </span>
                   
                   <div className="space-y-2 max-w-2xl">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">{item.title}</h3>
+                      <h3 className="text-2xl sm:text-4xl font-black tracking-tight text-white">{item.title}</h3>
                       <span className="px-3 py-1 bg-slate-800 text-emerald-400 text-xs font-bold rounded-lg border border-slate-700">
                         {item.subtitle}
                       </span>
