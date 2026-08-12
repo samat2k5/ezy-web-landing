@@ -1,4 +1,5 @@
 import React from 'react';
+import { getLogoPath, handleImageError } from '../../utils/logoHelper';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,7 +12,8 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <a href="#" className="inline-block">
               <img 
-                src="/Logos/ezyhr-full-logo-dark.png" 
+                src={getLogoPath('fullDark')} 
+                onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
                 alt="ezyHR Singapore HRMS Platform" 
                 className="h-10 w-auto object-contain" 
               />
@@ -59,27 +61,30 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Portals & Links</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a 
-                  href="https://hr.ezy.sg/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 font-bold hover:underline"
-                >
-                  Customer Sign In Portal →
+                <a href="https://hr.ezy.sg/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-bold hover:underline">
+                  Customer Sign In (hr.ezy.sg)
                 </a>
               </li>
-              <li><a href="#pricing" className="text-slate-400 hover:text-white transition-colors">SaaS Plans & Pricing</a></li>
-              <li><a href="#faq" className="text-slate-400 hover:text-white transition-colors">Help & FAQ</a></li>
-              <li><a href="https://ezy.sg/" className="text-slate-400 hover:text-white transition-colors">Marketing Website (ezy.sg)</a></li>
+              <li>
+                <a href="https://ezy.sg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
+                  Official Domain (ezy.sg)
+                </a>
+              </li>
+              <li><a href="#pricing" className="text-slate-400 hover:text-white transition-colors">SME Plans & Pricing</a></li>
+              <li><a href="#faq" className="text-slate-400 hover:text-white transition-colors">Statutory FAQ</a></li>
+              <li><span className="text-slate-500">Privacy Policy (PDPA)</span></li>
+              <li><span className="text-slate-500">Terms of Service</span></li>
             </ul>
           </div>
 
         </div>
 
-        {/* Legal Disclaimer & Copyright Footer */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-400 gap-4">
-          <p>© {new Date().getFullYear()} ezyHR. Operating under the ezy SaaS technology initiative of REALTEK ENGINEERING PTE. LTD. All rights reserved.</p>
-          <p className="text-slate-400 font-medium">Built for Singapore Employment & Statutory Payroll Requirements.</p>
+        {/* Bottom Legal Copyright Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+          <p>© {new Date().getFullYear()} ezyHR. Operating under ezy SaaS by REALTEK ENGINEERING PTE. LTD. All rights reserved.</p>
+          <p className="text-slate-400 font-mono text-[11px]">
+            Singapore Employment Act • MOM Payslip • CPF Board Compliant
+          </p>
         </div>
 
       </div>

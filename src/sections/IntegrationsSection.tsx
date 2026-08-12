@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layers, RefreshCw, CheckCircle2, ArrowRight } from 'lucide-react';
+import { getLogoPath, handleImageError } from '../utils/logoHelper';
 
 export const IntegrationsSection: React.FC = () => {
   const integrations = [
@@ -36,7 +37,12 @@ export const IntegrationsSection: React.FC = () => {
           {/* Central Hub Node */}
           <div className="flex justify-center mb-12">
             <div className="p-6 bg-slate-950 text-white rounded-3xl border-2 border-emerald-400 shadow-2xl flex flex-col items-center text-center space-y-2 relative z-10">
-              <img src="/Logos/ezyhr-full-logo-dark.png" alt="ezyHR Core Platform" className="h-10 w-auto object-contain" />
+              <img 
+                src={getLogoPath('fullDark')} 
+                onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
+                alt="ezyHR Core Platform" 
+                className="h-10 w-auto object-contain" 
+              />
               <span className="text-[11px] font-bold text-emerald-400 font-mono flex items-center gap-1">
                 <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Core Integration Hub
               </span>

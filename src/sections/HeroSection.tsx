@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle, Users, DollarSign, Clock, Calendar, Sparkles, TrendingUp, Bell, Bot, ShieldCheck, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { DEMO_DASHBOARD_STATS, DEMO_PAYROLL_EMPLOYEES } from '../data/demoData';
+import { getLogoPath, handleImageError } from '../utils/logoHelper';
 
 interface HeroSectionProps {
   onOpenDemo: () => void;
@@ -109,7 +110,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
                 
                 {/* Official Logo Brand Indicator */}
                 <div className="ml-4 pl-4 border-l border-slate-800 flex items-center gap-2.5">
-                  <img src="/Logos/logo-icon.png" alt="ezyHR Icon" className="h-5 w-auto" />
+                  <img 
+                    src={getLogoPath('icon')} 
+                    onError={(e) => handleImageError(e, 'Logos/logo-icon.png')}
+                    alt="ezyHR Icon" 
+                    className="h-5 w-auto" 
+                  />
                   <span className="text-xs font-mono text-slate-400 hidden sm:inline-block">
                     https://app.ezy.sg/dashboard
                   </span>
