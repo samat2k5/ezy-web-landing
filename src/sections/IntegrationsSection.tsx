@@ -182,11 +182,11 @@ export const IntegrationsSection: React.FC = () => {
         {/* Central Hub Badge */}
         <div className="flex justify-center mb-12">
           <div className="relative inline-flex flex-col items-center text-center rounded-3xl shadow-2xl shadow-emerald-400/25 border-2 border-emerald-400 overflow-hidden min-w-[240px]">
-            {/* White logo area */}
+            {/* White logo area — use fullLight (navy text) on white bg */}
             <div className="bg-white px-8 pt-7 pb-5 w-full flex justify-center">
               <img 
-                src={getLogoPath('fullDark')} 
-                onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
+                src={getLogoPath('fullLight')} 
+                onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo.png')}
                 alt="ezyHR Core Platform" 
                 className="h-11 w-auto object-contain" 
               />
