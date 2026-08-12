@@ -181,18 +181,21 @@ export const IntegrationsSection: React.FC = () => {
 
         {/* Central Hub Badge */}
         <div className="flex justify-center mb-12">
-          <div className="relative inline-flex flex-col items-center text-center p-6 bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 text-white rounded-3xl shadow-2xl shadow-emerald-500/30 border-2 border-white/20 min-w-[220px]">
-            {/* Glow ring */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-400/20 to-blue-500/20 blur-lg" />
-            <img 
-              src={getLogoPath('fullDark')} 
-              onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
-              alt="ezyHR Core Platform" 
-              className="h-11 w-auto object-contain relative z-10 drop-shadow-md" 
-            />
-            <span className="text-[11px] font-bold text-emerald-200 font-mono flex items-center gap-1.5 mt-2 relative z-10">
-              <RefreshCw className="w-3.5 h-3.5 animate-spin" /> Core Integration Hub
-            </span>
+          <div className="relative inline-flex flex-col items-center text-center rounded-3xl shadow-2xl shadow-emerald-400/25 border-2 border-emerald-400 overflow-hidden min-w-[240px]">
+            {/* White logo area */}
+            <div className="bg-white px-8 pt-7 pb-5 w-full flex justify-center">
+              <img 
+                src={getLogoPath('fullDark')} 
+                onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
+                alt="ezyHR Core Platform" 
+                className="h-11 w-auto object-contain" 
+              />
+            </div>
+            {/* Coloured label strip */}
+            <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-700 w-full px-6 py-2.5 flex items-center justify-center gap-2">
+              <RefreshCw className="w-3.5 h-3.5 text-emerald-200 animate-spin flex-shrink-0" />
+              <span className="text-[11px] font-bold text-emerald-100 font-mono">Core Integration Hub</span>
+            </div>
           </div>
         </div>
 
