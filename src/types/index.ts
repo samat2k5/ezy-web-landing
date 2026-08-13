@@ -41,4 +41,5 @@ export interface DemoFormData {
   modules: string[];
   preferredDate?: string;
   notes?: string;
+  preferredContact: 'email' | 'whatsapp' | 'either';
 }

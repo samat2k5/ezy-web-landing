@@ -25,7 +25,8 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     employeeCount: '11-50',
     modules: initialModule ? [initialModule] : ['Singapore Payroll', 'Leave & Attendance'],
     preferredDate: '',
-    notes: ''
+    notes: '',
+    preferredContact: 'email'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -69,6 +70,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
           company: formData.companyName,
           employeeCount: formData.employeeCount,
           phone: formData.phone,
+          preferredContact: formData.preferredContact,
           message: formData.notes,
           modules: formData.modules,
           website_url: '' // Will be empty if legit
@@ -213,20 +215,48 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
                 {/* Phone Number */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Phone Number *
+                    Mobile / WhatsApp {formData.preferredContact === 'whatsapp' ? '*' : ''}
                   </label>
                   <div className="relative">
                     <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
                       type="tel"
-                      required
+                      required={formData.preferredContact === 'whatsapp'}
                       placeholder="+65 9123 4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white text-slate-900"
+                      aria-required={formData.preferredContact === 'whatsapp'}
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Preferred Contact Method */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                  Choose how you'd prefer our team to contact you.
+                </label>
+                <div className="flex flex-wrap gap-3">
+                  {(['email', 'whatsapp', 'either'] as const).map((method) => (
+                    <label key={method} className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="preferredContact"
+                        value={method}
+                        checked={formData.preferredContact === method}
+                        onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value as 'email' | 'whatsapp' | 'either' })}
+                        className="w-4 h-4 text-emerald-600 border-slate-300 focus:ring-emerald-500"
+                      />
+                      <span className="text-sm text-slate-700 capitalize">{method}</span>
+                    </label>
+                  ))}
+                </div>
+                {formData.preferredContact === 'whatsapp' && (
+                  <p className="mt-2 text-xs text-slate-500" aria-live="polite">
+                    By selecting WhatsApp, you agree that ezyHR may contact you about this enquiry via WhatsApp.
+                  </p>
+                )}
               </div>
 
               {/* Employee Count */}
