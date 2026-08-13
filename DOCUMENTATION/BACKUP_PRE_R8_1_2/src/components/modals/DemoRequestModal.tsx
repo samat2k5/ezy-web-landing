@@ -59,36 +59,28 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     setSubmitError(null);
 
     try {
-      const payload = {
-        type: 'demo',
-        plan: typeof selectedPlan === 'string' ? selectedPlan : 'general',
-        name: String(formData.fullName || ''),
-        email: String(formData.workEmail || ''),
-        company: String(formData.companyName || ''),
-        employeeCount: String(formData.employeeCount || ''),
-        phone: String(formData.phone || ''),
-        preferredContact: String(formData.preferredContact || 'email'),
-        message: String(formData.notes || ''),
-        modules: Array.isArray(formData.modules) ? formData.modules.map(String) : [],
-        website_url: '' // Will be empty if legit
-      };
-
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          type: 'demo',
+          plan: selectedPlan,
+          name: formData.fullName,
+          email: formData.workEmail,
+          company: formData.companyName,
+          employeeCount: formData.employeeCount,
+          phone: formData.phone,
+          preferredContact: formData.preferredContact,
+          message: formData.notes,
+          modules: formData.modules,
+          website_url: '' // Will be empty if legit
+        })
       });
 
-      let data: any = {};
-      try {
-        const text = await response.text();
-        data = text ? JSON.parse(text) : {};
-      } catch (parseError) {
-        console.error('Failed to parse response:', parseError);
-      }
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit request. Please try again or contact support.');
+        throw new Error(data.error || 'Failed to submit request');
       }
 
       setSubmitted(true);

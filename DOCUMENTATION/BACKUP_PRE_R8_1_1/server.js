@@ -63,7 +63,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
       phone,
       message,
       modules, // optional array
-      preferredContact, // 'email', 'whatsapp', 'either'
       website_url // HONEYPOT
     } = req.body;
 
@@ -76,7 +75,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     // 2. Validation
     const allowedTypes = ['demo', 'trial'];
     const allowedPlans = ['general', 'essential', 'professional', 'business'];
-    const allowedContacts = ['email', 'whatsapp', 'either'];
 
     if (!type || !allowedTypes.includes(type)) {
       return res.status(400).json({ error: 'Invalid lead type' });
@@ -84,16 +82,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     if (!plan || !allowedPlans.includes(plan)) {
       return res.status(400).json({ error: 'Invalid plan context' });
     }
-
-    // 2a. Commercial Routing Hardening
-    const isInvalidCombo = 
-      (type === 'trial' && plan === 'business') ||
-      (type === 'demo' && (plan === 'essential' || plan === 'professional'));
-      
-    if (isInvalidCombo) {
-      return res.status(400).json({ error: 'Invalid lead type and plan combination' });
-    }
-
     if (!name || typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
       return res.status(400).json({ error: 'Invalid name' });
     }
@@ -103,20 +91,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     if (!company || typeof company !== 'string' || company.trim().length === 0 || company.length > 150) {
       return res.status(400).json({ error: 'Invalid company' });
     }
-    
-    // preferredContact defaults to 'email' if not provided (for backwards compatibility/safety)
-    const pContact = preferredContact || 'email';
-    if (!allowedContacts.includes(pContact)) {
-      return res.status(400).json({ error: 'Invalid preferred contact method' });
-    }
-
-    if (phone && (typeof phone !== 'string' || phone.length > 20 || !/^[\d\s+\-()]*$/.test(phone))) {
-      return res.status(400).json({ error: 'Invalid phone number format' });
-    }
-
-    if (pContact === 'whatsapp' && (!phone || phone.trim().length === 0)) {
-      return res.status(400).json({ error: 'Mobile / WhatsApp number is required when WhatsApp is selected as preferred contact.' });
-    }
 
     // Escape all user inputs for the email body
     const safeName = escapeHtml(name.trim());
@@ -124,7 +98,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     const safeCompany = escapeHtml(company.trim());
     const safeEmployeeCount = escapeHtml(employeeCount || 'Not specified');
     const safePhone = escapeHtml(phone || 'Not provided');
-    const safePreferredContact = escapeHtml(pContact.charAt(0).toUpperCase() + pContact.slice(1));
     const safeMessage = escapeHtml(message || 'No additional message');
     const safeModules = Array.isArray(modules) ? escapeHtml(modules.join(', ')) : 'None';
 
@@ -137,16 +110,12 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
 
     let internalHtml = `
       <h2>New ${isDemo ? 'Demo' : 'Free Trial'} Request</h2>
-      <p><strong>Lead Type:</strong> ${isDemo ? 'Demo' : 'Free Trial'}</p>
-      <p><strong>Selected Plan:</strong> ${plan.toUpperCase()}</p>
-      <br/>
+      <p><strong>Plan Context:</strong> ${plan.toUpperCase()}</p>
       <p><strong>Name:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> ${safeEmail}</p>
       <p><strong>Company:</strong> ${safeCompany}</p>
-      <p><strong>Work Email:</strong> ${safeEmail}</p>
-      <p><strong>Mobile / WhatsApp:</strong> ${safePhone}</p>
-      <p><strong>Preferred Contact:</strong> <span style="background-color: #f0fdf4; padding: 2px 6px; border: 1px solid #166534; color: #166534; font-weight: bold; border-radius: 4px;">${safePreferredContact}</span></p>
       <p><strong>Employee Count:</strong> ${safeEmployeeCount}</p>
-      <p><strong>Submitted Time:</strong> ${new Date().toISOString()}</p>
+      <p><strong>Phone:</strong> ${safePhone}</p>
     `;
 
     if (isDemo) {
@@ -156,12 +125,8 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
 
     // 4. Send Internal Email via Resend
     if (!process.env.RESEND_API_KEY) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn("RESEND_API_KEY missing in development. Simulating success.");
-        return res.status(200).json({ success: true, simulated: true });
-      }
-      console.error("RESEND_API_KEY missing. Cannot deliver lead.");
-      return res.status(500).json({ error: 'Server configuration error: Unable to deliver lead.' });
+      console.warn("RESEND_API_KEY missing. Simulating success for local development.");
+      return res.status(200).json({ success: true, simulated: true });
     }
 
     const { data: internalData, error: internalError } = await resend.emails.send({
@@ -192,7 +157,7 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
       <p>Thanks for your interest in ezyHR.</p>
       <p>We've received your ${isDemo ? 'demo' : 'free trial'} request.</p>
       ${planAcknowledgement}
-      <p>Our team will contact you using your preferred contact method.</p>
+      <p>${isDemo ? 'Our team will contact you shortly.' : 'Our team will follow up with the next steps for getting started.'}</p>
       <br/>
       <p>Regards,<br/>ezyHR<br/>EASY HR &bull; BETTER BUSINESS</p>
     `;

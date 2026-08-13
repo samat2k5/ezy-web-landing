@@ -10,11 +10,8 @@ interface FreeTrialModalProps {
 
 export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose, selectedPlan = 'general' }) => {
   const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
-  const [phone, setPhone] = useState('');
-  const [preferredContact, setPreferredContact] = useState<'email' | 'whatsapp' | 'either'>('email');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -46,33 +43,23 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
     setSubmitError(null);
 
     try {
-      const payload = {
-        type: 'trial',
-        plan: typeof selectedPlan === 'string' ? selectedPlan : 'general',
-        name: String(name || ''), 
-        email: String(email || ''),
-        company: String(company || ''),
-        phone: String(phone || ''),
-        preferredContact: String(preferredContact || 'email'),
-        website_url: '' // Will be empty if legit
-      };
-
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          type: 'trial',
+          plan: selectedPlan,
+          name: company, // fallback for name since trial form only has company
+          email,
+          company,
+          website_url: '' // Will be empty if legit
+        })
       });
 
-      let data: any = {};
-      try {
-        const text = await response.text();
-        data = text ? JSON.parse(text) : {};
-      } catch (parseError) {
-        console.error('Failed to parse response:', parseError);
-      }
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit request. Please try again or contact support.');
+        throw new Error(data.error || 'Failed to submit request');
       }
 
       setSubmitted(true);
@@ -136,18 +123,6 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">Full Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Tan Wei Ming"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                />
-              </div>
-
-              <div>
                 <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">Company Name</label>
                 <input
                   type="text"
@@ -169,48 +144,6 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
-                  Mobile / WhatsApp {preferredContact === 'whatsapp' ? '*' : ''}
-                </label>
-                <input
-                  type="tel"
-                  required={preferredContact === 'whatsapp'}
-                  placeholder="+65 9123 4567"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                  aria-required={preferredContact === 'whatsapp'}
-                />
-              </div>
-
-              {/* Preferred Contact Method */}
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
-                  Choose how you'd prefer our team to contact you.
-                </label>
-                <div className="flex flex-wrap gap-3">
-                  {(['email', 'whatsapp', 'either'] as const).map((method) => (
-                    <label key={method} className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="trialPreferredContact"
-                        value={method}
-                        checked={preferredContact === method}
-                        onChange={(e) => setPreferredContact(e.target.value as 'email' | 'whatsapp' | 'either')}
-                        className="w-4 h-4 text-emerald-600 border-slate-300 focus:ring-emerald-500"
-                      />
-                      <span className="text-sm text-slate-700 capitalize">{method}</span>
-                    </label>
-                  ))}
-                </div>
-                {preferredContact === 'whatsapp' && (
-                  <p className="mt-2 text-xs text-slate-500" aria-live="polite">
-                    By selecting WhatsApp, you agree that ezyHR may contact you about this enquiry via WhatsApp.
-                  </p>
-                )}
               </div>
 
               <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-start gap-2.5">

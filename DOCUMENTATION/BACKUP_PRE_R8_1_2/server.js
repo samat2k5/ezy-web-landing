@@ -156,10 +156,6 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
 
     // 4. Send Internal Email via Resend
     if (!process.env.RESEND_API_KEY) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn("RESEND_API_KEY missing in development. Simulating success.");
-        return res.status(200).json({ success: true, simulated: true });
-      }
       console.error("RESEND_API_KEY missing. Cannot deliver lead.");
       return res.status(500).json({ error: 'Server configuration error: Unable to deliver lead.' });
     }

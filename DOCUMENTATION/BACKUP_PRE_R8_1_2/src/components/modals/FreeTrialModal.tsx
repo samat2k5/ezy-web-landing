@@ -46,33 +46,25 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
     setSubmitError(null);
 
     try {
-      const payload = {
-        type: 'trial',
-        plan: typeof selectedPlan === 'string' ? selectedPlan : 'general',
-        name: String(name || ''), 
-        email: String(email || ''),
-        company: String(company || ''),
-        phone: String(phone || ''),
-        preferredContact: String(preferredContact || 'email'),
-        website_url: '' // Will be empty if legit
-      };
-
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          type: 'trial',
+          plan: selectedPlan,
+          name, 
+          email,
+          company,
+          phone,
+          preferredContact,
+          website_url: '' // Will be empty if legit
+        })
       });
 
-      let data: any = {};
-      try {
-        const text = await response.text();
-        data = text ? JSON.parse(text) : {};
-      } catch (parseError) {
-        console.error('Failed to parse response:', parseError);
-      }
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit request. Please try again or contact support.');
+        throw new Error(data.error || 'Failed to submit request');
       }
 
       setSubmitted(true);

@@ -42,20 +42,14 @@ export function App() {
     setIsDemoModalOpen(true);
   };
 
-  const handleOpenDemo = (planId?: any) => {
+  const handleOpenDemo = (planId: 'general' | 'essential' | 'professional' | 'business' = 'general') => {
     setInitialModuleForDemo(undefined);
-    const plan = typeof planId === 'string' && ['general', 'essential', 'professional', 'business'].includes(planId) 
-      ? planId as 'general' | 'essential' | 'professional' | 'business' 
-      : 'general';
-    setSelectedPlan(plan);
+    setSelectedPlan(planId);
     setIsDemoModalOpen(true);
   };
 
-  const handleOpenTrial = (planId?: any) => {
-    const plan = typeof planId === 'string' && ['general', 'essential', 'professional', 'business'].includes(planId) 
-      ? planId as 'general' | 'essential' | 'professional' | 'business' 
-      : 'general';
-    setSelectedPlan(plan);
+  const handleOpenTrial = (planId: 'general' | 'essential' | 'professional' | 'business' = 'general') => {
+    setSelectedPlan(planId);
     setIsTrialModalOpen(true);
   };
 
