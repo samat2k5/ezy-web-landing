@@ -54,20 +54,6 @@
   background-clip: text;
 }
 
-.text-gradient-coral {
-  background: linear-gradient(120deg, #F97316 0%, #FB7185 50%, #EF4444 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-gold {
-  background: linear-gradient(120deg, #F59E0B 0%, #FBBF24 50%, #F59E0B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* =====================================================
    GLASS PANELS
    ===================================================== */

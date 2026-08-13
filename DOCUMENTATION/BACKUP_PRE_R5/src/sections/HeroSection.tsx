@@ -330,68 +330,42 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/60 to-transparent z-10" />
             </div>
 
-            {/* Floating notification cards (R5 5-card contextual suite) */}
-            <div className="absolute top-12 -left-6 z-20 animate-float-slow hidden xl:block">
-              <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-emerald-200/90 flex items-center gap-3 min-w-[210px] backdrop-blur-md">
-                <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+            {/* Floating notification cards */}
+            <div className="absolute top-20 -left-6 z-20 animate-float-slow hidden xl:block">
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-emerald-200/80 flex items-center gap-3 min-w-[210px]">
+                <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-black text-slate-900">Payroll Batch Approved</div>
-                  <div className="text-[10px] text-emerald-700 font-bold">Jul 2026 · 247 employees</div>
-                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5 font-semibold">DEMO DATA</span>
+                  <div className="text-xs font-bold text-slate-900">Payroll Batch Approved</div>
+                  <div className="text-[10px] text-emerald-700 font-medium">Jul 2026 · 247 employees</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>
 
-            <div className="absolute top-44 -right-4 lg:-right-8 z-20 animate-float hidden lg:block" style={{ animationDelay: '1.5s' }}>
-              <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-sky-200/90 flex items-center gap-3 min-w-[200px] backdrop-blur-md">
-                <div className="w-8 h-8 rounded-xl bg-sky-100 flex items-center justify-center flex-shrink-0">
+            <div className="absolute top-48 -right-4 lg:-right-8 z-20 animate-float hidden lg:block" style={{ animationDelay: '1.5s' }}>
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-sky-200/80 flex items-center gap-3 min-w-[200px]">
+                <div className="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4 text-sky-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-black text-slate-900">Attendance Recorded</div>
-                  <div className="text-[10px] text-sky-700 font-bold">203 Clocked In · 96.8%</div>
-                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5 font-semibold">DEMO DATA</span>
+                  <div className="text-xs font-bold text-slate-900">Attendance Recorded</div>
+                  <div className="text-[10px] text-sky-700 font-medium">203 Clocked In · 96.8%</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>
 
-            <div className="absolute top-[48%] -left-8 z-20 animate-float-slow hidden xl:block" style={{ animationDelay: '2.5s' }}>
-              <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-amber-200/90 flex items-center gap-3 min-w-[200px] backdrop-blur-md">
-                <div className="w-8 h-8 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-4 h-4 text-amber-600" />
-                </div>
-                <div>
-                  <div className="text-xs font-black text-slate-900">CPF Calculated</div>
-                  <div className="text-[10px] text-amber-700 font-bold">2026 OW Ceiling ($8k)</div>
-                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5 font-semibold">DEMO DATA</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute bottom-24 -right-6 z-20 animate-float hidden xl:block" style={{ animationDelay: '3.5s' }}>
-              <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-teal-200/90 flex items-center gap-3 min-w-[190px] backdrop-blur-md">
-                <div className="w-8 h-8 rounded-xl bg-teal-100 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-4 h-4 text-teal-600" />
-                </div>
-                <div>
-                  <div className="text-xs font-black text-slate-900">Leave Approved</div>
-                  <div className="text-[10px] text-teal-700 font-bold">TW · Annual Leave</div>
-                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5 font-semibold">DEMO DATA</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute bottom-8 -left-4 z-20 animate-float-slow hidden lg:block" style={{ animationDelay: '4.2s' }}>
-              <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-violet-200/90 flex items-center gap-3 min-w-[200px] backdrop-blur-md">
-                <div className="w-8 h-8 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+            <div className="absolute top-1/2 -left-4 z-20 animate-float-slow hidden xl:block" style={{ animationDelay: '2.5s' }}>
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-violet-200/80 flex items-center gap-3 min-w-[200px]">
+                <div className="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4 text-violet-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-black text-slate-900">AI Insight</div>
-                  <div className="text-[10px] text-violet-700 font-bold">0 Payroll Anomalies</div>
-                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5 font-semibold">DEMO DATA</span>
+                  <div className="text-xs font-bold text-slate-900">AI Anomaly Checked</div>
+                  <div className="text-[10px] text-violet-700 font-medium">0 Anomalies · Verified</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>
