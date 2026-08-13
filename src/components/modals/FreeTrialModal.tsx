@@ -5,22 +5,69 @@ import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
 interface FreeTrialModalProps {
   isOpen: boolean;
   onClose: () => void;
+  selectedPlan?: 'general' | 'essential' | 'professional' | 'business';
 }
 
-export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose }) => {
+export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose, selectedPlan = 'general' }) => {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
 
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  useModalFocusTrap(isOpen, modalRef, onClose);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  const resetAndClose = () => {
+    setSubmitted(false);
+    setSubmitError(null);
+    setIsSubmitting(false);
+    onClose();
+  };
+
+  useModalFocusTrap(isOpen, modalRef, resetAndClose);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    // Honeypot check
+    if (honeypotRef.current && honeypotRef.current.value) {
+      setSubmitted(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'trial',
+          plan: selectedPlan,
+          name: company, // fallback for name since trial form only has company
+          email,
+          company,
+          website_url: '' // Will be empty if legit
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit request');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err.message || 'We couldn\'t submit your request right now. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,9 +106,12 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
               <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900">Trial Environment Created!</h4>
+              <h4 className="text-lg font-bold text-slate-900">Trial Request Submitted!</h4>
               <p className="text-xs text-slate-600">
-                We've sent your sandbox activation link to <strong>{email}</strong>. Check your inbox to begin setup.
+                Thanks — we've received your free trial request.
+                {selectedPlan && selectedPlan !== 'general' && (
+                  <span className="block mt-2 font-medium">Interested plan: {selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1)}</span>
+                )}
               </p>
               <button
                 onClick={onClose}
@@ -103,11 +153,23 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
                 </p>
               </div>
 
+              {/* Hidden Honeypot Field */}
+              <div className="hidden" aria-hidden="true">
+                <label>Do not fill this out if you are human: <input type="text" name="website_url" ref={honeypotRef} tabIndex={-1} autoComplete="off" /></label>
+              </div>
+
+              {submitError && (
+                <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-xs text-red-600 font-medium">
+                  {submitError}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Activate Free Trial <ArrowRight className="w-4 h-4" />
+                {isSubmitting ? 'Sending...' : 'Request Free Trial'} <ArrowRight className="w-4 h-4" />
               </button>
             </form>
           )}

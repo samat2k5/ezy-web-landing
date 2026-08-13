@@ -7,12 +7,14 @@ interface DemoRequestModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialModule?: string;
+  selectedPlan?: 'general' | 'essential' | 'professional' | 'business';
 }
 
 export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
   isOpen,
   onClose,
-  initialModule
+  initialModule,
+  selectedPlan = 'general'
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState<DemoFormData>({
@@ -26,10 +28,16 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     notes: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const modalRef = useRef<HTMLDivElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const resetAndClose = () => {
     setSubmitted(false);
+    setSubmitError(null);
+    setIsSubmitting(false);
     onClose();
   };
 
@@ -37,9 +45,48 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    // Honeypot check: If the hidden field has a value, silently reject
+    if (honeypotRef.current && honeypotRef.current.value) {
+      setSubmitted(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'demo',
+          plan: selectedPlan,
+          name: formData.fullName,
+          email: formData.workEmail,
+          company: formData.companyName,
+          employeeCount: formData.employeeCount,
+          phone: formData.phone,
+          message: formData.notes,
+          modules: formData.modules,
+          website_url: '' // Will be empty if legit
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit request');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err.message || 'We couldn\'t submit your request right now. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleModuleToggle = (moduleName: string) => {
@@ -92,7 +139,10 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
               </div>
               <h4 className="text-2xl font-bold text-slate-900">Demo Request Submitted!</h4>
               <p className="text-slate-600 max-w-md mx-auto text-sm leading-relaxed">
-                Thank you, <strong className="text-slate-900">{formData.fullName}</strong>. Our Singapore HR tech specialist will review your requirements for <strong className="text-slate-900">{formData.companyName}</strong> and send a calendar invitation to <strong className="text-slate-900">{formData.workEmail}</strong>.
+                Thanks — we've received your demo request.
+                {selectedPlan && selectedPlan !== 'general' && (
+                  <span className="block mt-2 font-medium">Interested plan: {selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1)}</span>
+                )}
               </p>
               <div className="pt-4">
                 <button
@@ -251,15 +301,27 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
                 </div>
               </div>
 
+              {/* Hidden Honeypot Field */}
+              <div className="hidden" aria-hidden="true">
+                <label>Do not fill this out if you are human: <input type="text" name="website_url" ref={honeypotRef} tabIndex={-1} autoComplete="off" /></label>
+              </div>
+
+              {submitError && (
+                <div className="p-3 bg-red-50 border border-red-100 rounded-xl text-xs text-red-600 font-medium">
+                  {submitError}
+                </div>
+              )}
+
               <div className="pt-2 flex items-center justify-between">
                 <span className="text-xs text-slate-500">
                   🔒 No obligation. PDPA aligned data privacy.
                 </span>
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02]"
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Book Free Demo
+                  {isSubmitting ? 'Sending...' : 'Book Free Demo'}
                 </button>
               </div>
             </form>

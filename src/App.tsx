@@ -34,17 +34,22 @@ export function App() {
   const [initialModuleForDemo, setInitialModuleForDemo] = useState<string | undefined>(undefined);
   const [payslipEmployee, setPayslipEmployee] = useState<SampleEmployeePayroll | null>(null);
 
+  const [selectedPlan, setSelectedPlan] = useState<'essential' | 'professional' | 'business' | 'general'>('general');
+
   const handleOpenDemoWithModule = (moduleName: string) => {
     setInitialModuleForDemo(moduleName);
+    setSelectedPlan('general');
     setIsDemoModalOpen(true);
   };
 
-  const handleOpenDemo = () => {
+  const handleOpenDemo = (planId: 'general' | 'essential' | 'professional' | 'business' = 'general') => {
     setInitialModuleForDemo(undefined);
+    setSelectedPlan(planId);
     setIsDemoModalOpen(true);
   };
 
-  const handleOpenTrial = () => {
+  const handleOpenTrial = (planId: 'general' | 'essential' | 'professional' | 'business' = 'general') => {
+    setSelectedPlan(planId);
     setIsTrialModalOpen(true);
   };
 
@@ -148,11 +153,13 @@ export function App() {
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
         initialModule={initialModuleForDemo}
+        selectedPlan={selectedPlan}
       />
 
       <FreeTrialModal 
         isOpen={isTrialModalOpen}
         onClose={() => setIsTrialModalOpen(false)}
+        selectedPlan={selectedPlan}
       />
 
       {payslipEmployee && (

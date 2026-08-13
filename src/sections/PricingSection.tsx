@@ -2,8 +2,8 @@ import React from 'react';
 import { CheckCircle2, ArrowRight, ShieldCheck, Building2, MessageSquare } from 'lucide-react';
 
 interface PricingSectionProps {
-  onOpenDemo: () => void;
-  onOpenTrial: () => void;
+  onOpenDemo: (planId?: 'general' | 'essential' | 'professional' | 'business') => void;
+  onOpenTrial: (planId?: 'general' | 'essential' | 'professional' | 'business') => void;
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOpenTrial }) => {
@@ -36,7 +36,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Employee Self-Service (ESS) Portal',
         'Email & Helpdesk Support',
       ],
-      ctaText: 'Get Started',
+      ctaText: 'Request Free Trial',
+      onCtaClick: () => onOpenTrial('essential')
     },
     {
       id: 'professional',
@@ -65,7 +66,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Management Dashboards',
         'Priority Singapore Support',
       ],
-      ctaText: 'Get Started',
+      ctaText: 'Request Free Trial',
+      onCtaClick: () => onOpenTrial('professional')
     },
     {
       id: 'business',
@@ -93,7 +95,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Supported Accounting Integrations',
         'Priority Support & Dedicated Onboarding',
       ],
-      ctaText: 'Get Started',
+      ctaText: 'Book a Demo',
+      onCtaClick: () => onOpenDemo('business')
     }
   ];
 
@@ -211,7 +214,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
 
                 {/* CTA */}
                 <button
-                  onClick={onOpenDemo}
+                  onClick={plan.onCtaClick}
                   className={`mt-auto w-full py-3.5 px-4 font-extrabold text-sm rounded-xl flex items-center justify-center gap-2 ${plan.theme.cta}`}
                 >
                   {plan.ctaText} <ArrowRight className="w-4 h-4" />
@@ -241,7 +244,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
             <div>
               <div className="text-xs font-bold text-slate-900">100+ employees?</div>
               <button 
-                onClick={onOpenDemo}
+                onClick={() => onOpenDemo('general')}
                 className="text-xs text-emerald-700 font-bold hover:text-emerald-900 transition-colors"
               >
                 Talk to us about volume pricing →
