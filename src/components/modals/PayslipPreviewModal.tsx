@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { X, Download, ShieldCheck, Printer, CheckCircle } from 'lucide-react';
 import { SampleEmployeePayroll } from '../../data/demoData';
+import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
 
 interface PayslipPreviewModalProps {
   isOpen: boolean;
@@ -13,15 +14,9 @@ export const PayslipPreviewModal: React.FC<PayslipPreviewModalProps> = ({
   onClose,
   employee
 }) => {
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useModalFocusTrap(isOpen, modalRef, onClose);
 
   if (!isOpen) return null;
 
@@ -31,6 +26,7 @@ export const PayslipPreviewModal: React.FC<PayslipPreviewModalProps> = ({
       onClick={onClose}
     >
       <div 
+        ref={modalRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="payslip-modal-title"

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { X, CheckCircle2, Calendar, Users, Building, Mail, Phone, User, Sparkles } from 'lucide-react';
 import { DemoFormData } from '../../types';
+import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
 
 interface DemoRequestModalProps {
   isOpen: boolean;
@@ -25,15 +26,14 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     notes: ''
   });
 
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        resetAndClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const resetAndClose = () => {
+    setSubmitted(false);
+    onClose();
+  };
+
+  useModalFocusTrap(isOpen, modalRef, resetAndClose);
 
   if (!isOpen) return null;
 
@@ -51,17 +51,13 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     }));
   };
 
-  const resetAndClose = () => {
-    setSubmitted(false);
-    onClose();
-  };
-
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/70 backdrop-blur-sm animate-fadeIn"
       onClick={resetAndClose}
     >
       <div 
+        ref={modalRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="demo-modal-title"

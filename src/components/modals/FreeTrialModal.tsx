@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { X, CheckCircle2, Shield, ArrowRight } from 'lucide-react';
+import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
 
 interface FreeTrialModalProps {
   isOpen: boolean;
@@ -11,15 +12,9 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
 
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useModalFocusTrap(isOpen, modalRef, onClose);
 
   if (!isOpen) return null;
 
@@ -34,6 +29,7 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
       onClick={onClose}
     >
       <div 
+        ref={modalRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="trial-modal-title"

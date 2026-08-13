@@ -89,9 +89,13 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDemo }) => {
           </div>
 
           {/* Right Column: FAQ Accordion List */}
-          <div className="lg:col-span-7 space-y-3.5">
+          <div className="lg:col-span-7 space-y-3.5" role="region" aria-label="Frequently Asked Questions">
             {filteredFaqs.length === 0 ? (
-              <div className="text-center py-12 bg-white rounded-2xl border border-slate-200 text-slate-500 text-sm">
+              <div 
+                role="status" 
+                aria-live="polite" 
+                className="text-center py-12 bg-white rounded-2xl border border-slate-200 text-slate-500 text-sm"
+              >
                 No matching questions found. Try searching another term or speak to our team.
               </div>
             ) : (
