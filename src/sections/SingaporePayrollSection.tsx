@@ -37,7 +37,7 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-black uppercase tracking-widest backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/50 text-amber-300 text-xs font-black uppercase tracking-widest backdrop-blur-md">
             Singapore Statutory Engine
           </div>
           <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
@@ -53,19 +53,19 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
 
         {/* Workflow Steps — Amber/Gold Financial Flow */}
         <div className="mb-20">
-          <h3 className="text-center text-xs font-black uppercase tracking-widest text-amber-400/90 mb-10 font-mono">
+          <h3 className="text-center text-xs font-black uppercase tracking-widest text-amber-400 mb-10 font-mono">
             Singapore Statutory Financial Flow Architecture
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3.5">
             {payrollWorkflow.map((s, idx) => (
               <div 
                 key={idx}
-                className="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30 hover:border-amber-400 transition-all flex flex-col justify-between shadow-lg backdrop-blur-xl group"
+                className="bg-slate-900/95 p-5 rounded-2xl border border-amber-400/40 hover:border-amber-400 transition-all flex flex-col justify-between shadow-lg backdrop-blur-xl group"
               >
                 <div>
                   <span className="text-2xl font-black text-amber-400 font-mono block mb-2 group-hover:scale-110 transition-transform origin-left">{s.step}</span>
                   <h4 className="text-xs font-black text-white mb-1">{s.title}</h4>
-                  <p className="text-[11px] text-slate-400 leading-tight font-medium">{s.desc}</p>
+                  <p className="text-[11px] text-slate-300 leading-tight font-medium">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -73,7 +73,7 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
         </div>
 
         {/* Financial Tech Statutory Panel */}
-        <div className="bg-slate-900/95 text-white p-8 sm:p-11 rounded-3xl border border-amber-500/30 shadow-product-ui backdrop-blur-xl">
+        <div className="bg-slate-900/95 text-white p-8 sm:p-11 rounded-3xl border border-amber-400/40 shadow-product-ui backdrop-blur-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
             <div>
               <h3 className="text-xl sm:text-2xl font-black text-white flex items-center gap-3">
@@ -84,7 +84,7 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
               </p>
             </div>
             
-            <div className="px-4 py-2 bg-amber-500/20 text-amber-300 border border-amber-400/40 rounded-xl text-xs font-black font-mono">
+            <div className="px-4 py-2 bg-amber-400/10 text-amber-300 border border-amber-400/50 rounded-xl text-xs font-black font-mono">
               2026 CPF OW Ceiling: $8,000
             </div>
           </div>

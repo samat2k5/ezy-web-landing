@@ -34,7 +34,7 @@ export const BusinessBenefitsSection: React.FC<BusinessBenefitsSectionProps> = (
   ];
 
   return (
-    <section className="py-28 bg-ambient-indigo text-slate-900 relative border-b border-indigo-100 overflow-hidden">
+    <section className="py-28 pb-36 lg:pb-44 bg-ambient-indigo text-slate-900 relative border-b border-indigo-100 overflow-hidden">
       
       {/* Soft Multi-colour Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[520px] bg-gradient-to-tr from-indigo-200/40 via-blue-200/30 to-emerald-200/40 blur-[170px] rounded-full pointer-events-none" />

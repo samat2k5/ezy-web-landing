@@ -344,7 +344,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
               </div>
             </div>
 
-            <div className="absolute top-44 -right-4 lg:-right-8 z-20 animate-float hidden lg:block" style={{ animationDelay: '1.5s' }}>
+            <div className="absolute top-44 -right-4 lg:-right-8 z-20 animate-float hidden xl:block" style={{ animationDelay: '1.5s' }}>
               <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-sky-200/90 flex items-center gap-3 min-w-[200px] backdrop-blur-md">
                 <div className="w-8 h-8 rounded-xl bg-sky-100 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4 text-sky-600" />
@@ -383,7 +383,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
               </div>
             </div>
 
-            <div className="absolute bottom-8 -left-4 z-20 animate-float-slow hidden lg:block" style={{ animationDelay: '4.2s' }}>
+            <div className="absolute bottom-8 -left-4 z-20 animate-float-slow hidden xl:block" style={{ animationDelay: '4.2s' }}>
               <div className="glass-panel-light rounded-2xl px-4 py-3 shadow-editorial border border-violet-200/90 flex items-center gap-3 min-w-[200px] backdrop-blur-md">
                 <div className="w-8 h-8 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4 text-violet-600" />

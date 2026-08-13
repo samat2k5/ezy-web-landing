@@ -114,7 +114,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                 step="250"
                 value={salaryInput}
                 onChange={(e) => setSalaryInput(Number(e.target.value))}
-                className="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+                className="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 slider-amber-glow"
               />
               <div className="flex justify-between text-[10px] text-slate-400 mt-2 font-mono font-medium">
                 <span>$2,000</span>

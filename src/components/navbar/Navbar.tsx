@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl animate-fadeIn">
+        <div className="md:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fadeIn">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a
