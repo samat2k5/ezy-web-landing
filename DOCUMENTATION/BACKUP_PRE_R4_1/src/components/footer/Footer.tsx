@@ -4,19 +4,19 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 text-slate-300 border-t border-slate-900 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-900">
-          
+
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <a href="#" className="inline-block">
-              <img 
-                src="/Logos/ezyhr-full-logo-dark.png" 
-                alt="ezyHR Singapore HRMS Platform" 
-                className="h-10 w-auto object-contain" 
+              <img
+                src="/Logos/ezyhr-full-logo-dark.png"
+                alt="ezyHR Singapore HRMS Platform"
+                className="h-10 w-auto object-contain"
               />
             </a>
-            
+
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               ezyHR is an intelligent cloud-based HRMS and statutory payroll platform built specifically for Singapore employment requirements.
             </p>
@@ -59,9 +59,9 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Portals & Links</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a 
-                  href="https://hr.ezy.sg/" 
-                  target="_blank" 
+                <a
+                  href="https://hr.ezy.sg/signup"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 font-bold hover:underline"
                 >

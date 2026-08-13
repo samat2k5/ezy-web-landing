@@ -104,7 +104,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
   const Icon3 = modules[3].icon;
 
   return (
-    <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+    <section id="platform" className="relative py-24 lg:py-32 bg-white overflow-hidden">
 
       {/* Subtle ambient light */}
       <div className="absolute inset-0 pointer-events-none">

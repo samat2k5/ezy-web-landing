@@ -103,7 +103,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
   return (
     <section id="pricing" className="py-24 bg-slate-50 text-slate-900 relative border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-200/50 border border-slate-300/50 text-slate-800 text-xs font-bold uppercase tracking-wider">
@@ -119,7 +119,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
 
           {/* Billing Cycle Toggle */}
           <div className="pt-4 flex items-center justify-center">
-            <div 
+            <div
               role="group"
               aria-label="Billing cycle selector"
               className="inline-flex items-center p-1 bg-slate-100 border border-slate-200 rounded-2xl"
@@ -127,22 +127,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
               <button
                 onClick={() => setBillingCycle('monthly')}
                 aria-pressed={billingCycle === 'monthly'}
-                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
-                  billingCycle === 'monthly'
-                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
+                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 ${billingCycle === 'monthly'
+                  ? 'bg-white text-slate-900 shadow-sm border border-slate-200'
+                  : 'text-slate-500 hover:text-slate-700'
+                  }`}
               >
                 Monthly
               </button>
               <button
                 onClick={() => setBillingCycle('annual')}
                 aria-pressed={billingCycle === 'annual'}
-                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
-                  billingCycle === 'annual'
-                    ? 'bg-emerald-500 text-slate-950 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
+                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${billingCycle === 'annual'
+                  ? 'bg-emerald-500 text-slate-950 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
+                  }`}
               >
                 <span>Annual</span>
                 <span className="px-2 py-0.5 rounded-full bg-slate-950 text-emerald-400 text-[10px] font-black tracking-wider">
@@ -156,7 +154,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan) => (
-            <div 
+            <div
               key={plan.id}
               className={`bg-white rounded-2xl border flex flex-col transition-all ${plan.theme.cardBorder}`}
             >
@@ -180,7 +178,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
                   <div className="flex items-baseline gap-1">
                     <span className="text-xs font-bold text-slate-500 mt-1">S$</span>
                     <span className="text-5xl font-black text-slate-950 tracking-tight">
-                      {billingCycle === 'monthly' 
+                      {billingCycle === 'monthly'
                         ? plan.monthlyPrice.toFixed(0)
                         : plan.annualMonthlyPrice.toFixed(2)
                       }
@@ -243,7 +241,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
             <MessageSquare className="w-4 h-4 text-slate-600 flex-shrink-0" />
             <div>
               <div className="text-xs font-bold text-slate-900">100+ employees?</div>
-              <button 
+              <button
                 onClick={() => onOpenDemo('general')}
                 className="text-xs text-emerald-700 font-bold hover:text-emerald-900 transition-colors"
               >

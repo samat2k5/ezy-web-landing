@@ -10,7 +10,7 @@ const annotations = [
 
 export const CoreHRSection: React.FC = () => {
   return (
-    <section className="relative bg-slate-50 border-b border-slate-200 py-24 lg:py-36 overflow-hidden">
+    <section id="features" className="relative bg-slate-50 border-b border-slate-200 py-24 lg:py-36 overflow-hidden">
 
       {/* Atmospheric glow */}
       <div className="absolute inset-0 pointer-events-none">

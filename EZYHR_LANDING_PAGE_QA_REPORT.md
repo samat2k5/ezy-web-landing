@@ -2,7 +2,7 @@
 
 **Product:** ezyHR — Cloud HRMS & Payroll Platform for Singapore Businesses  
 **Brand Initiative:** ezy SaaS by REALTEK ENGINEERING PTE. LTD. (Singapore UEN: 201723665M)  
-**URL:** https://hr.ezy.sg/ | **Support:** support@hr.ezy.sg  
+**URL:** https://hr.ezy.sg/signup | **Support:** support@hr.ezy.sg  
 **QA Date:** August 12, 2026  
 **Build Status:** PASSED (Production bundle generated cleanly with 0 errors)  
 

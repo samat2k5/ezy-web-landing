@@ -5,20 +5,20 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-slate-200 border-t border-slate-800 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          
+
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <a href="#" className="inline-block">
-              <img 
-                src={getLogoPath('fullDark')} 
+              <img
+                src={getLogoPath('fullDark')}
                 onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
-                alt="ezyHR Singapore HRMS Platform" 
-                className="h-10 w-auto object-contain" 
+                alt="ezyHR Singapore HRMS Platform"
+                className="h-10 w-auto object-contain"
               />
             </a>
-            
+
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm font-medium">
               ezyHR is an intelligent cloud-based HRMS and statutory payroll platform built specifically for Singapore employment requirements.
             </p>
