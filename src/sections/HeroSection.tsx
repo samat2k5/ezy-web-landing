@@ -24,11 +24,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
   return (
     <section className="relative min-h-screen flex flex-col bg-hero-atmosphere text-slate-900 overflow-hidden">
 
-      {/* ── Atmospheric radial light fields ── */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[900px] h-[700px] bg-gradient-to-br from-sky-300/25 via-cyan-200/20 to-transparent blur-[140px] rounded-full" />
-        <div className="absolute top-1/3 right-0 w-[700px] h-[600px] bg-gradient-to-bl from-emerald-200/20 via-teal-200/15 to-transparent blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-gradient-to-tr from-blue-200/20 to-transparent blur-[100px] rounded-full" />
+      {/* ── Atmospheric radial light fields (Refined & Restrained) ── */}
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        <div className="absolute top-0 left-1/4 w-[800px] h-[600px] bg-gradient-to-br from-sky-300/15 via-cyan-200/10 to-transparent blur-[140px] rounded-full" />
+        <div className="absolute top-1/3 right-0 w-[600px] h-[500px] bg-gradient-to-bl from-emerald-200/12 via-teal-200/10 to-transparent blur-[120px] rounded-full" />
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-28 lg:pt-36 pb-0 relative z-10 flex-1 flex flex-col">
@@ -68,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={onOpenDemo}
-                className="group flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-sky-600 via-cyan-600 to-teal-600 hover:from-sky-700 hover:to-teal-700 text-white font-bold rounded-2xl text-[15px] shadow-glow-blue transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                className="group flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-sky-600 via-cyan-600 to-teal-600 hover:from-sky-700 hover:to-teal-700 text-white font-bold rounded-2xl text-[15px] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Book a Free Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -80,6 +79,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
                 Start Free Trial
               </button>
             </div>
+
+            {/* Singapore Trust Microcopy */}
+            <p className="text-[12px] text-slate-500 font-medium flex items-center gap-1.5 pt-0.5">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+              Built around Singapore HR &amp; payroll workflows. No credit card required.
+            </p>
 
             {/* Credibility indicators */}
             <div className="flex flex-wrap gap-x-6 gap-y-2.5">

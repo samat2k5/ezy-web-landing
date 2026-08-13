@@ -44,7 +44,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenDemo, on
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <button
             onClick={onOpenDemo}
-            className="w-full sm:w-auto px-9 py-4.5 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-slate-950 font-black rounded-2xl text-base shadow-glow-blue transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
+            className="w-full sm:w-auto px-9 py-4.5 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-slate-950 font-black rounded-2xl text-base shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
           >
             <span>Book a Free Demo</span>
             <ArrowRight className="w-5 h-5 text-slate-950" />
