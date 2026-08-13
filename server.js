@@ -18,6 +18,14 @@ const __dirname = path.dirname(__filename);
 // Trust proxy for Railway so rate limiting gets the real client IP
 app.set('trust proxy', 1);
 
+// Canonical Domain Redirect (www to apex)
+app.use((req, res, next) => {
+  if (req.hostname === 'www.ezy.sg') {
+    return res.redirect(301, `https://ezy.sg${req.originalUrl}`);
+  }
+  next();
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
