@@ -100,6 +100,25 @@ export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = (
               </div>
             ))}
           </div>
+
+          {/* Supported Export Formats for Singapore Workflows */}
+          <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <span className="text-[11px] font-mono font-bold text-amber-300 uppercase tracking-wider block mb-1">
+                Supported Export Formats for Singapore Workflows
+              </span>
+              <p className="text-[11px] text-slate-400 font-medium">
+                Built around Singapore payroll requirements · CPF · SDL · SHG · IRAS workflows
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 text-[10px] font-mono font-bold">
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-300">DBS GIRO (.txt)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-300">UOB Payables (.txt)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-300">OCBC GIRO (.txt)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-300">HSBC GIRO (.txt)</span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-emerald-500/30 text-emerald-300">IRAS AIS (.xml)</span>
+            </div>
+          </div>
         </div>
 
       </div>

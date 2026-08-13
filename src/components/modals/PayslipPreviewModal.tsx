@@ -13,11 +13,27 @@ export const PayslipPreviewModal: React.FC<PayslipPreviewModalProps> = ({
   onClose,
   employee
 }) => {
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payslip-modal-title"
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
@@ -28,18 +44,23 @@ export const PayslipPreviewModal: React.FC<PayslipPreviewModalProps> = ({
               DEMO DATA
             </div>
             <div>
-              <h3 className="text-lg font-bold">Itemized Payslip Preview</h3>
+              <h3 id="payslip-modal-title" className="text-lg font-bold">Itemized Payslip Preview</h3>
               <p className="text-xs text-slate-400">Singapore Statutory Format • ezyHR Mobile & ESS</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <button 
               onClick={() => alert("This is a demo preview payslip file download.")} 
+              aria-label="Export PDF payslip"
               className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-lg text-xs flex items-center gap-1.5 transition-colors"
             >
               <Download className="w-4 h-4" /> Export PDF
             </button>
-            <button onClick={onClose} className="p-1.5 text-slate-400 hover:text-white rounded-lg">
+            <button 
+              onClick={onClose}
+              aria-label="Close payslip modal"
+              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            >
               <X className="w-5 h-5" />
             </button>
           </div>

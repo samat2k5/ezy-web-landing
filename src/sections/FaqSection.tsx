@@ -104,7 +104,9 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDemo }) => {
                   >
                     <button
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none hover:bg-slate-50/80"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${faq.id}`}
+                      className="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-2xl hover:bg-slate-50/80"
                     >
                       <span className="text-sm sm:text-base font-bold text-slate-900 pr-2">{faq.question}</span>
                       <ChevronDown className={`w-5 h-5 text-emerald-600 flex-shrink-0 transition-transform duration-200 ${
@@ -113,7 +115,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDemo }) => {
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 pb-5 pt-1 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed animate-fadeIn">
+                      <div id={`faq-answer-${faq.id}`} className="px-5 pb-5 pt-1 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed animate-fadeIn">
                         {faq.answer}
                       </div>
                     )}

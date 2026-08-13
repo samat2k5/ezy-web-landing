@@ -1,0 +1,5 @@
+# ezyHR Singapore HRMS & Statutory Payroll Software
+User-agent: *
+Allow: /
+
+Sitemap: https://ezy.sg/sitemap.xml

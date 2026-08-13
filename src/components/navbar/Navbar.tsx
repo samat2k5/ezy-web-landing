@@ -87,8 +87,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
           <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 text-slate-700 hover:text-emerald-600 rounded-xl bg-slate-100/80 focus:outline-none"
-              aria-label="Toggle mobile menu"
+              className="p-2.5 text-slate-700 hover:text-emerald-600 rounded-xl bg-slate-100/80 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -99,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fadeIn">
+        <div id="mobile-nav-drawer" className="md:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fadeIn">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <a

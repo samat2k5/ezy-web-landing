@@ -11,6 +11,16 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -19,14 +29,21 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="trial-modal-title"
         className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6 bg-slate-900 text-white relative">
           <button
             onClick={onClose}
+            aria-label="Close trial window"
             className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg"
           >
             <X className="w-5 h-5" />
@@ -34,7 +51,7 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose 
           <div className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-3">
             14-Day Free Evaluation
           </div>
-          <h3 className="text-xl font-bold">Start Your ezyHR Trial</h3>
+          <h3 id="trial-modal-title" className="text-xl font-bold">Start Your ezyHR Trial</h3>
           <p className="text-xs text-slate-300 mt-1">
             Experience Singapore HR & Payroll automation with full module access.
           </p>

@@ -25,6 +25,16 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
     notes: ''
   });
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        resetAndClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -47,8 +57,14 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/70 backdrop-blur-sm animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/70 backdrop-blur-sm animate-fadeIn"
+      onClick={resetAndClose}
+    >
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="demo-modal-title"
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
@@ -65,7 +81,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
           <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">
             <Sparkles className="w-4 h-4" /> Customized Walkthrough
           </div>
-          <h3 className="text-2xl font-bold text-white">Book a Personalized ezyHR Demo</h3>
+          <h3 id="demo-modal-title" className="text-2xl font-bold text-white">Book a Personalized ezyHR Demo</h3>
           <p className="text-slate-300 text-sm mt-1">
             Discover how ezyHR automates everyday HR and Singapore payroll for your team.
           </p>

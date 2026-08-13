@@ -48,6 +48,17 @@
     }
     </script>
 
+    <!-- Structured Data: WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ezyHR Singapore",
+      "url": "https://ezy.sg/",
+      "inLanguage": "en-SG"
+    }
+    </script>
+
     <!-- Structured Data: SoftwareApplication Schema -->
     <script type="application/ld+json">
     {
@@ -63,6 +74,56 @@
         "availability": "https://schema.org/InStock"
       },
       "description": "Cloud-based HRMS & Singapore Payroll Software supporting CPF, SDL, SHG, IRAS AIS/IR8A automation, and AI HR assistant."
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ezyHR cloud-based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ezyHR is a 100% cloud-based HRMS and payroll platform accessible from any modern web browser or mobile device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ezyHR suitable for Singapore SMEs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ezyHR is engineered specifically for Singapore SMEs, growing businesses, and multi-branch companies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ezyHR support Singapore statutory payroll requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ezyHR supports automated CPF contribution calculations (for Singapore Citizens and PRs across age tiers), Skills Development Levy (SDL), Self-Help Group (SHG) contributions, and statutory capping rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ezyHR support IRAS Auto-Inclusion Scheme (AIS) and IR8A export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ezyHR enables HR administrators to generate audit-ready IRAS AIS files and export IR8A / IR8S forms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ezyHR export bank GIRO files for Singapore banks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ezyHR generates bank GIRO files compatible with major Singapore financial institutions including DBS, OCBC, UOB, HSBC, and Standard Chartered."
+          }
+        }
+      ]
     }
     </script>
   </head>

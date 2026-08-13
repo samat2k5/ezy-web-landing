@@ -7,6 +7,8 @@ interface PricingSectionProps {
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOpenTrial }) => {
+  const [billingCycle, setBillingCycle] = React.useState<'monthly' | 'annual'>('annual');
+
   const plans = [
     {
       id: 'starter',
@@ -65,7 +67,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
             SaaS Plan Architecture
           </div>
@@ -75,6 +77,41 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
           <p className="text-base sm:text-lg text-slate-600">
             Choose a plan aligned with your employee count and operational scale. Every plan supports Singapore statutory requirements.
           </p>
+
+          {/* Billing Cycle Toggle */}
+          <div className="pt-4 flex items-center justify-center">
+            <div 
+              role="group"
+              aria-label="Billing cycle selector"
+              className="inline-flex items-center p-1 bg-white border border-slate-200 rounded-2xl shadow-sm"
+            >
+              <button
+                onClick={() => setBillingCycle('monthly')}
+                aria-pressed={billingCycle === 'monthly'}
+                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
+                  billingCycle === 'monthly'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Monthly Billing
+              </button>
+              <button
+                onClick={() => setBillingCycle('annual')}
+                aria-pressed={billingCycle === 'annual'}
+                className={`px-5 py-2 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
+                  billingCycle === 'annual'
+                    ? 'bg-emerald-500 text-slate-950 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>Annual Billing</span>
+                <span className="px-2 py-0.5 rounded-full bg-slate-950 text-emerald-400 text-[10px] font-black tracking-wider">
+                  SAVE 20%
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Pricing Cards Grid */}
@@ -101,8 +138,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
                 <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed font-medium">{plan.target}</p>
 
                 <div className="py-4 border-y border-slate-100 mb-6">
-                  <span className="text-xs sm:text-sm font-bold text-emerald-700 block">Pricing Information Available on Request</span>
-                  <span className="text-xs text-slate-500">Tailored based on active employee volume</span>
+                  <span className="text-xs sm:text-sm font-bold text-emerald-700 block">
+                    {billingCycle === 'annual' ? 'Annual Subscription (Save 20%)' : 'Monthly Subscription'}
+                  </span>
+                  <span className="text-xs text-slate-500">Custom volume rates available on request</span>
                 </div>
 
                 <div className="space-y-3 mb-8">
