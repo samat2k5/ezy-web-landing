@@ -7,13 +7,13 @@ interface SingaporePayrollSectionProps {
 
 export const SingaporePayrollSection: React.FC<SingaporePayrollSectionProps> = ({ onOpenDemo }) => {
   const payrollWorkflow = [
-    { step: '01', title: 'Employee Master', desc: 'Sync residency & statutory status.' },
-    { step: '02', title: 'Attendance', desc: 'Fetch approved timesheets & OT math.' },
-    { step: '03', title: 'Leave & Claims', desc: 'Factor unpaid leave & approved expenses.' },
-    { step: '04', title: 'Payroll Math', desc: 'Auto-calculate CPF, SDL, and SHG.' },
-    { step: '05', title: 'CPF Submission', desc: 'Generate CPF monthly submission file.' },
-    { step: '06', title: 'Payslip & GIRO', desc: 'Issue payslips & export bank GIRO files.' },
-    { step: '07', title: 'IRAS Tax Filing', desc: 'Export IRAS AIS & annual IR8A forms.' },
+    { step: '01', title: 'Employee Data', desc: 'Sync master records & residency status.' },
+    { step: '02', title: 'Attendance', desc: 'Fetch verified clock-in hours & OT.' },
+    { step: '03', title: 'Leave', desc: 'Deduct unpaid leave & statutory days.' },
+    { step: '04', title: 'Claims', desc: 'Incorporate approved expense claims.' },
+    { step: '05', title: 'CPF & SDL', desc: 'Automate CPF OW ceiling & SDL caps.' },
+    { step: '06', title: 'SHG Funds', desc: 'Apply CDAC / SINDA / ECF / MBMF rates.' },
+    { step: '07', title: 'Payroll & Payslip', desc: 'Disburse via GIRO & issue itemised payslips.' },
   ];
 
   const statutoryComponents = [

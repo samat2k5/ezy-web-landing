@@ -34,10 +34,10 @@ export const AttendanceSection: React.FC = () => {
               <span className="text-xs font-black uppercase tracking-widest text-cyan-400">Time &amp; Attendance</span>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-white leading-[1.05]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.05]">
               Know who's working.<br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-teal-300">
-                Without clocking in stress.
+                Without chasing timesheets.
               </span>
             </h2>
 

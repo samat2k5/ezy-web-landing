@@ -100,6 +100,9 @@ interface PlatformOverviewProps {
 }
 
 export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModule }) => {
+  const Icon0 = modules[0].icon;
+  const Icon3 = modules[3].icon;
+
   return (
     <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
 
@@ -130,7 +133,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
           >
             <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${modules[0].color} opacity-10 rounded-full blur-3xl`} />
             <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${modules[0].color} flex items-center justify-center mb-5 shadow-lg`}>
-              <modules[0].icon className="w-6 h-6 text-white" />
+              <Icon0 className="w-6 h-6 text-white" />
             </div>
             <h3 className="text-2xl font-black text-slate-900 mb-2">{modules[0].title}</h3>
             <p className="text-slate-600 text-sm leading-relaxed mb-6">{modules[0].desc}</p>
@@ -162,7 +165,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
           >
             <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${modules[3].color} opacity-10 rounded-full blur-3xl`} />
             <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${modules[3].color} flex items-center justify-center mb-4 shadow-lg`}>
-              <modules[3].icon className="w-5 h-5 text-white" />
+              <Icon3 className="w-5 h-5 text-white" />
             </div>
             <h3 className="text-xl font-black text-slate-900 mb-1.5">{modules[3].title}</h3>
             <p className="text-slate-600 text-xs leading-relaxed mb-4">{modules[3].desc}</p>

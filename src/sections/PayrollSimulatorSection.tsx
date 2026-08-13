@@ -64,18 +64,24 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
   };
 
   return (
-    <section className="py-24 bg-ambient-ice text-slate-900 relative border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 lg:py-36 bg-deep-navy text-white relative overflow-hidden border-b border-slate-800">
+      
+      {/* Background radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-blue-600/20 via-cyan-500/15 to-violet-600/20 blur-[150px] rounded-full" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider">
-            <Calculator className="w-3.5 h-3.5" /> Interactive Product Demonstration
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/60 text-cyan-400 text-xs font-black uppercase tracking-widest backdrop-blur-md">
+            <Calculator className="w-3.5 h-3.5 text-cyan-400" /> Live Singapore Statutory Calculator
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-950">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             Test Singapore Payroll Calculations Live
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-300">
             Adjust salary parameters below to see how ezyHR automates Singapore CPF, SDL, SHG deductions, and net salary calculations.
           </p>
         </div>
@@ -83,19 +89,21 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
           
           {/* Controls Panel */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 space-y-6 shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <h3 className="text-base font-bold text-slate-950">Salary & Statutory Inputs</h3>
-              <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold tracking-wider border border-emerald-200">
+          <div className="lg:col-span-6 bg-slate-900/90 p-7 sm:p-9 rounded-3xl border border-slate-800 space-y-6 shadow-product-ui backdrop-blur-xl">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <h3 className="text-base font-extrabold text-white flex items-center gap-2">
+                Salary &amp; Statutory Inputs
+              </h3>
+              <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold tracking-wider border border-emerald-500/30 font-mono">
                 DEMO DATA
               </span>
             </div>
 
             {/* Salary Slider with Smooth Number Feedback */}
             <div>
-              <div className="flex justify-between items-center mb-2">
-                <label className="text-xs font-semibold text-slate-700">Monthly Gross Salary (SGD)</label>
-                <span className="text-lg font-black text-emerald-700 font-mono transition-all">
+              <div className="flex justify-between items-center mb-3">
+                <label className="text-xs font-bold text-slate-300">Monthly Gross Salary (SGD)</label>
+                <span className="text-xl font-black text-cyan-400 font-mono">
                   ${salaryInput.toLocaleString()}
                 </span>
               </div>
@@ -106,19 +114,19 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                 step="250"
                 value={salaryInput}
                 onChange={(e) => setSalaryInput(Number(e.target.value))}
-                className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                className="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
               />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1 font-mono font-medium">
+              <div className="flex justify-between text-[10px] text-slate-400 mt-2 font-mono font-medium">
                 <span>$2,000</span>
-                <span className="text-emerald-700 font-bold">$8,000 (2026 CPF OW Ceiling)</span>
+                <span className="text-cyan-400 font-bold">$8,000 (2026 CPF OW Ceiling)</span>
                 <span>$12,000</span>
               </div>
             </div>
 
             {/* Age Tier Selection */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-2">Employee Age Group</label>
-              <div className="grid grid-cols-2 gap-2">
+              <label className="block text-xs font-bold text-slate-300 mb-2.5">Employee Age Group</label>
+              <div className="grid grid-cols-2 gap-2.5">
                 {[
                   { id: 'under55', label: '55 & Below (20% / 17%)' },
                   { id: '55to60', label: '55 to 60 (15% / 12%)' },
@@ -128,10 +136,10 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                   <button
                     key={tier.id}
                     onClick={() => setAgeGroup(tier.id as any)}
-                    className={`p-2.5 text-xs text-left rounded-xl border transition-all ${
+                    className={`p-3 text-xs text-left rounded-xl border transition-all ${
                       ageGroup === tier.id
-                        ? 'border-emerald-500 bg-emerald-100 text-emerald-900 font-bold shadow-xs'
-                        : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300'
+                        ? 'border-cyan-500 bg-cyan-950/60 text-cyan-300 font-bold shadow-xs'
+                        : 'border-slate-800 bg-slate-950/50 text-slate-400 hover:border-slate-700'
                     }`}
                   >
                     {tier.label}
@@ -142,64 +150,64 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
 
             {/* Residency Status */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-2">Residency Status</label>
-              <div className="grid grid-cols-2 gap-2">
+              <label className="block text-xs font-bold text-slate-300 mb-2.5">Residency Status</label>
+              <div className="grid grid-cols-2 gap-2.5">
                 <button
                   onClick={() => setResidency('SC')}
-                  className={`py-2.5 px-3 text-xs font-semibold rounded-xl border transition-all ${
+                  className={`py-3 px-3 text-xs font-bold rounded-xl border transition-all ${
                     residency === 'SC'
-                      ? 'border-emerald-500 bg-emerald-100 text-emerald-900 font-bold shadow-xs'
-                      : 'border-slate-200 bg-slate-50 text-slate-700'
+                      ? 'border-cyan-500 bg-cyan-950/60 text-cyan-300 font-bold shadow-xs'
+                      : 'border-slate-800 bg-slate-950/50 text-slate-400'
                   }`}
                 >
-                  Singapore Citizen / SPR
+                  Singapore Citizen / PR
                 </button>
                 <button
                   onClick={() => setResidency('EP')}
-                  className={`py-2.5 px-3 text-xs font-semibold rounded-xl border transition-all ${
+                  className={`py-3 px-3 text-xs font-bold rounded-xl border transition-all ${
                     residency === 'EP'
-                      ? 'border-emerald-500 bg-emerald-100 text-emerald-900 font-bold shadow-xs'
-                      : 'border-slate-200 bg-slate-50 text-slate-700'
+                      ? 'border-cyan-500 bg-cyan-950/60 text-cyan-300 font-bold shadow-xs'
+                      : 'border-slate-800 bg-slate-950/50 text-slate-400'
                   }`}
                 >
-                  Employment Pass / S-Pass
+                  EP / S-Pass ($0 CPF)
                 </button>
               </div>
             </div>
           </div>
 
           {/* Results Display with Tooltips */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 space-y-6 shadow-xl">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-600" /> Automated Calculation Output
+          <div className="lg:col-span-6 bg-slate-900/90 p-7 sm:p-9 rounded-3xl border border-slate-800 space-y-6 shadow-product-ui backdrop-blur-xl">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <h3 className="text-base font-extrabold text-white flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-cyan-400" /> Automated Statutory Breakdown
               </h3>
-              <span className="text-xs text-slate-500 font-mono font-medium">SGD Currency</span>
+              <span className="text-xs text-slate-400 font-mono">SGD Currency</span>
             </div>
 
             <div className="space-y-3">
-              <div className="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-                <span className="text-slate-700 font-medium">Gross Monthly Salary:</span>
-                <span className="font-mono font-bold text-slate-950 text-sm">${salaryInput.toFixed(2)}</span>
+              <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
+                <span className="text-slate-300 font-medium">Gross Monthly Salary:</span>
+                <span className="font-mono font-bold text-white text-sm">${salaryInput.toFixed(2)}</span>
               </div>
 
               {/* Employee CPF with Tooltip */}
               <div className="relative">
-                <div className="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-                  <span className="text-slate-700 font-medium flex items-center gap-1.5">
+                <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
+                  <span className="text-slate-300 font-medium flex items-center gap-1.5">
                     Employee CPF Deduction:
                     <button 
                       onClick={() => setActiveTooltip(activeTooltip === 'empCpf' ? null : 'empCpf')}
-                      className="text-slate-400 hover:text-emerald-700 focus:outline-none"
+                      className="text-slate-500 hover:text-cyan-400 focus:outline-none"
                       aria-label="Toggle Employee CPF definition"
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-red-600 text-sm">-${currentCalc.empCpf.toFixed(2)}</span>
+                  <span className="font-mono font-bold text-red-400 text-sm">-${currentCalc.empCpf.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'empCpf' && (
-                  <div className="p-3 bg-slate-900 text-white rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
+                  <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
                     {tooltips.empCpf}
                   </div>
                 )}
@@ -207,21 +215,21 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
 
               {/* Employer CPF with Tooltip */}
               <div className="relative">
-                <div className="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-                  <span className="text-slate-700 font-medium flex items-center gap-1.5">
+                <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
+                  <span className="text-slate-300 font-medium flex items-center gap-1.5">
                     Employer CPF Contribution:
                     <button 
                       onClick={() => setActiveTooltip(activeTooltip === 'emprCpf' ? null : 'emprCpf')}
-                      className="text-slate-400 hover:text-emerald-700 focus:outline-none"
+                      className="text-slate-500 hover:text-cyan-400 focus:outline-none"
                       aria-label="Toggle Employer CPF definition"
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-blue-700 text-sm">+${currentCalc.emprCpf.toFixed(2)}</span>
+                  <span className="font-mono font-bold text-cyan-400 text-sm">+${currentCalc.emprCpf.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'emprCpf' && (
-                  <div className="p-3 bg-slate-900 text-white rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
+                  <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
                     {tooltips.emprCpf}
                   </div>
                 )}
@@ -229,21 +237,21 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
 
               {/* SDL with Tooltip */}
               <div className="relative">
-                <div className="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-                  <span className="text-slate-700 font-medium flex items-center gap-1.5">
+                <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
+                  <span className="text-slate-300 font-medium flex items-center gap-1.5">
                     Skills Development Levy (SDL):
                     <button 
                       onClick={() => setActiveTooltip(activeTooltip === 'sdl' ? null : 'sdl')}
-                      className="text-slate-400 hover:text-emerald-700 focus:outline-none"
+                      className="text-slate-500 hover:text-cyan-400 focus:outline-none"
                       aria-label="Toggle SDL definition"
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-slate-700 text-sm">+${currentCalc.sdl.toFixed(2)}</span>
+                  <span className="font-mono font-bold text-slate-300 text-sm">+${currentCalc.sdl.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'sdl' && (
-                  <div className="p-3 bg-slate-900 text-white rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
+                  <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
                     {tooltips.sdl}
                   </div>
                 )}
@@ -252,21 +260,21 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
               {/* SHG Deductions */}
               {residency === 'SC' && (
                 <div className="relative">
-                  <div className="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-                    <span className="text-slate-700 font-medium flex items-center gap-1.5">
+                  <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
+                    <span className="text-slate-300 font-medium flex items-center gap-1.5">
                       Self-Help Group (SHG Fund Demo):
                       <button 
                         onClick={() => setActiveTooltip(activeTooltip === 'shg' ? null : 'shg')}
-                        className="text-slate-400 hover:text-emerald-700 focus:outline-none"
+                        className="text-slate-500 hover:text-cyan-400 focus:outline-none"
                         aria-label="Toggle SHG definition"
                       >
                         <HelpCircle className="w-3.5 h-3.5" />
                       </button>
                     </span>
-                    <span className="font-mono font-bold text-red-600 text-sm">-$3.00</span>
+                    <span className="font-mono font-bold text-red-400 text-sm">-$3.00</span>
                   </div>
                   {activeTooltip === 'shg' && (
-                    <div className="p-3 bg-slate-900 text-white rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
+                    <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
                       {tooltips.shg}
                     </div>
                   )}
@@ -275,23 +283,23 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
             </div>
 
             {/* Net Take-Home Pay Result */}
-            <div className="p-5 bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 rounded-2xl border border-emerald-400 shadow-md">
+            <div className="p-5 bg-gradient-to-r from-sky-600 via-cyan-600 to-teal-600 text-white rounded-2xl border border-cyan-400/40 shadow-lg">
               <div className="flex justify-between items-center">
                 <div>
-                  <span className="text-xs uppercase font-extrabold tracking-wider block opacity-90">Estimated Net Employee Take-Home</span>
+                  <span className="text-xs uppercase font-extrabold tracking-wider block opacity-90">Estimated Net Take-Home</span>
                   <span className="text-2xl sm:text-3xl font-black font-mono mt-1 block">${currentCalc.netPay.toFixed(2)}</span>
                 </div>
                 
                 <button
                   onClick={() => onOpenPayslipModal(DEMO_PAYROLL_EMPLOYEES[0])}
-                  className="px-4 py-2 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5"
+                  className="px-4 py-2.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 border border-slate-800"
                 >
-                  <FileText className="w-4 h-4" /> Itemised Payslip Preview
+                  <FileText className="w-4 h-4 text-cyan-400" /> Itemised Payslip Preview
                 </button>
               </div>
             </div>
 
-            <p className="text-[10px] text-slate-500 leading-tight">
+            <p className="text-[10px] text-slate-400 leading-tight">
               *Disclaimer: This interactive preview illustrates standard 2026 Singapore statutory CPF Ordinary Wage rates, Skills Development Levy (SDL) bounds ($2.00 min, $11.25 max), and demonstration SHG rates. Actual payroll output depends on specific employee citizenship dates, Voluntary CPF contributions, and Additional Wage (AW) ceilings.
             </p>
           </div>

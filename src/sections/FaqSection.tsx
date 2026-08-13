@@ -38,8 +38,9 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDemo }) => {
               <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
             </div>
             
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950 leading-tight">
-              Everything you need to know about ezyHR.
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-tight">
+              Questions?<br />
+              <span className="text-gradient-hero">We've got answers.</span>
             </h2>
             
             <p className="text-base text-slate-600 leading-relaxed">

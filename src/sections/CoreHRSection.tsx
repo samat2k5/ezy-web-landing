@@ -33,10 +33,8 @@ export const CoreHRSection: React.FC = () => {
 
           {/* Left — editorial copy */}
           <div className="lg:w-[40%] space-y-8">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-slate-950 leading-[1.05]">
-              ONE PLACE<br />
-              FOR EVERY<br />
-              <span className="text-gradient-hero">EMPLOYEE.</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.05]">
+              One place for every employee.
             </h2>
 
             <p className="text-lg text-slate-600 leading-relaxed">

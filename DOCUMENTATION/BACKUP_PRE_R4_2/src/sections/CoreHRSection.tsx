@@ -1,110 +1,138 @@
 import React from 'react';
-import { UserCheck, Network, User, BellRing, CheckCircle2, ArrowRight, FileText, Shield } from 'lucide-react';
+import { Users, CheckCircle2, Globe, Phone, FileText, Heart, Shield, ArrowRight } from 'lucide-react';
 
-interface CoreHRSectionProps {
-  onOpenDemo?: () => void;
-}
+const annotations = [
+  { label: 'Work Pass Verified', color: 'text-sky-600 bg-sky-50 border-sky-200', top: '12%', right: '-8%' },
+  { label: 'CPF Enrolled', color: 'text-emerald-600 bg-emerald-50 border-emerald-200', top: '35%', right: '-10%' },
+  { label: 'Leave Balance: 14d', color: 'text-amber-600 bg-amber-50 border-amber-200', bottom: '30%', right: '-6%' },
+  { label: 'Emergency Contact', color: 'text-violet-600 bg-violet-50 border-violet-200', bottom: '12%', left: '-6%' },
+];
 
-export const CoreHRSection: React.FC<CoreHRSectionProps> = ({ onOpenDemo }) => {
-  const coreHrBullets = [
-    'Single source of truth for all employee master profiles',
-    'Interactive organizational chart and reporting lines',
-    'Employee Self-Service (ESS) web and mobile portal',
-    'Automated work pass expiry tracking (EP, S-Pass, WP)',
-    'Centralized employment contracts and document repository'
-  ];
-
+export const CoreHRSection: React.FC = () => {
   return (
-    <section id="features" className="py-24 bg-ambient-ice text-slate-900 relative border-b border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Editorial Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs font-bold uppercase tracking-wider">
-            Foundation Core HR
+    <section className="relative bg-ambient-ice py-24 lg:py-36 overflow-hidden">
+
+      {/* Atmospheric glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-0 w-[700px] h-[500px] -translate-y-1/2 bg-gradient-to-r from-sky-200/30 to-transparent blur-[120px]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-gradient-to-bl from-blue-100/40 to-transparent blur-[100px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-lg">
+            <Users className="w-4 h-4 text-white" />
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-950 leading-tight">
-            One place for every employee.
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600">
-            ezyHR transforms manual paper files into secure digital employee master records with automated work pass expiry notifications and self-service portals.
-          </p>
+          <span className="text-xs font-black uppercase tracking-widest text-sky-700">Core HR</span>
         </div>
 
-        {/* Product-Led Showcase Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Crisp Light Product UI Showcase */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-2xl space-y-5 text-slate-900 relative">
-            
-            {/* Floating UI Fragment Badge */}
-            <div className="hidden sm:flex absolute -top-4 -right-4 z-20 items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 text-xs font-black shadow-xl">
-              <CheckCircle2 className="w-4 h-4 text-slate-950" /> Work Pass Verified
-            </div>
+        {/* Two-column asymmetric layout */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
 
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4 text-xs">
-              <span className="font-bold text-slate-950 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-600" /> Digital Employee Master Profile
-              </span>
-              <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">
-                ACTIVE • SC CITIZEN
-              </span>
-            </div>
+          {/* Left — editorial copy */}
+          <div className="lg:w-[40%] space-y-8">
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-slate-950 leading-[1.05]">
+              ONE PLACE<br />
+              FOR EVERY<br />
+              <span className="text-gradient-hero">EMPLOYEE.</span>
+            </h2>
 
-            <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
-              <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white font-black flex items-center justify-center text-lg shadow-md">
-                TW
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-slate-950">Tan Wei Ming</h4>
-                <p className="text-xs text-slate-600 font-medium">Senior Software Engineer • Engineering Dept</p>
-                <span className="text-[11px] text-slate-500 block mt-1 font-mono">Emp ID: SG-2024-0042 • Joined 15 Jan 2022</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-slate-500 block text-[10px] uppercase font-bold">Residency Status</span>
-                <span className="text-slate-950 font-bold mt-1 block">Singapore Citizen</span>
-              </div>
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-slate-500 block text-[10px] uppercase font-bold">Work Pass Expiry</span>
-                <span className="text-emerald-700 font-bold mt-1 block">N/A (Citizen)</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Key Capability Bullets */}
-          <div className="lg:col-span-5 space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-              Centralize your people data with total confidence.
-            </h3>
-            
-            <p className="text-base text-slate-600 leading-relaxed">
-              Consolidate employee profiles, employment history, bank details, and compliance records in a single digital database.
+            <p className="text-lg text-slate-600 leading-relaxed">
+              A complete digital employee record — work history, documents, work passes, CPF enrolment, emergency contacts and more — accessible by HR, manager and employee.
             </p>
 
-            <div className="space-y-3 pt-2">
-              {coreHrBullets.map((bullet, idx) => (
-                <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span>{bullet}</span>
+            <div className="space-y-4">
+              {[
+                'Digital employee master records with full audit trail',
+                'Work pass management and expiry alerts (EP, SP, WP)',
+                'Organisation chart and department structure',
+                'Role-based access control',
+                'New hire onboarding workflow',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4.5 h-4.5 text-sky-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-slate-700 font-medium">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4">
-              <button
-                onClick={onOpenDemo}
-                className="px-6 py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center gap-2"
-              >
-                Explore Core HR <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+            <button className="flex items-center gap-2 text-sm font-bold text-sky-700 hover:text-sky-900 transition-colors group">
+              See Core HR in action <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </div>
 
-        </div>
+          {/* Right — large employee profile UI */}
+          <div className="lg:w-[60%] relative">
+            <div className="relative">
+              {/* Main employee record card */}
+              <div className="bg-white rounded-3xl shadow-product-ui overflow-hidden border border-slate-200/60">
 
+                {/* Profile header */}
+                <div className="bg-gradient-to-r from-sky-600 to-blue-700 px-7 py-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-2xl bg-white/20 border-2 border-white/40 flex items-center justify-center text-white text-2xl font-black">
+                      TW
+                    </div>
+                    <div className="text-white">
+                      <div className="text-xl font-black">Tan Wei Ming</div>
+                      <div className="text-sky-200 text-sm font-medium">Senior Software Engineer · Engineering</div>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full">EMP-0001</span>
+                        <span className="text-[10px] font-bold bg-emerald-400/30 text-emerald-200 px-2 py-0.5 rounded-full">Active</span>
+                        <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full">Singapore Citizen</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Record details grid */}
+                <div className="p-6 grid grid-cols-2 gap-4">
+                  {[
+                    { label: 'NRIC', value: 'S●●●●●●8A', icon: FileText },
+                    { label: 'Date Joined', value: '15 Mar 2022', icon: CheckCircle2 },
+                    { label: 'Base Salary', value: '$6,800 / mth', icon: null },
+                    { label: 'CPF Rate', value: '20% / 17%', icon: null },
+                    { label: 'Department', value: 'Engineering', icon: null },
+                    { label: 'Work Status', value: 'Singapore Citizen', icon: null },
+                    { label: 'Annual Leave', value: '14 days remaining', icon: null },
+                    { label: 'Next Review', value: '15 Mar 2027', icon: null },
+                  ].map((field, i) => (
+                    <div key={i} className="bg-slate-50 rounded-xl p-3.5 border border-slate-100">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">{field.label}</div>
+                      <div className="text-sm font-bold text-slate-800">{field.value}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Document chips */}
+                <div className="px-6 pb-5">
+                  <div className="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-2.5">Linked Documents</div>
+                  <div className="flex flex-wrap gap-2">
+                    {['Employment Contract', 'NRIC Copy', 'Payslip History', 'Leave Records', 'IR8A 2025'].map(doc => (
+                      <span key={doc} className="text-[10px] font-semibold px-2.5 py-1.5 bg-sky-50 text-sky-700 border border-sky-200 rounded-lg flex items-center gap-1">
+                        <FileText className="w-3 h-3" />{doc}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating annotation tags */}
+              {annotations.map((a, i) => (
+                <div
+                  key={i}
+                  className={`absolute hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-xl border text-[11px] font-bold ${a.color} shadow-sm backdrop-blur-sm`}
+                  style={{ top: a.top, bottom: a.bottom, right: a.right, left: a.left }}
+                >
+                  <CheckCircle2 className="w-3 h-3" />
+                  {a.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

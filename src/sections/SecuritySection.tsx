@@ -30,71 +30,96 @@ export const SecuritySection: React.FC = () => {
         {/* Asymmetric 2-Column Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Crisp Light Security Posture Visual Dashboard */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-2xl space-y-5 text-slate-900">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
-                <span className="text-xs font-bold text-slate-950 uppercase tracking-wider">Security Control Center</span>
+          {/* Left Column: Large Security Dashboard */}
+          <div className="lg:col-span-6 bg-slate-900 text-white p-7 sm:p-9 rounded-3xl border border-slate-800 shadow-product-ui space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                <span className="text-xs font-black text-white uppercase tracking-wider">Enterprise Security Dashboard</span>
               </div>
-              <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-200">
-                ACTIVE PRIVACY ENFORCED
+              <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold border border-emerald-500/40 font-mono">
+                DEMO DATA
               </span>
             </div>
 
             <div className="space-y-3 font-mono text-xs">
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3 font-sans text-slate-800 font-bold">
-                  <Lock className="w-4 h-4 text-blue-600" />
-                  <span>Data Encryption Standard</span>
+              <div className="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-3 font-sans text-slate-200 font-bold">
+                  <Lock className="w-4 h-4 text-emerald-400" />
+                  <span>Data Encryption</span>
                 </div>
-                <span className="text-emerald-700 font-bold">AES-256 / TLS 1.3</span>
+                <span className="text-emerald-400 font-bold">AES-256 / TLS 1.3</span>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3 font-sans text-slate-800 font-bold">
-                  <Key className="w-4 h-4 text-purple-600" />
-                  <span>Identity Authentication</span>
+              <div className="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-3 font-sans text-slate-200 font-bold">
+                  <Key className="w-4 h-4 text-cyan-400" />
+                  <span>Role Access Control</span>
                 </div>
-                <span className="text-blue-700 font-bold">2FA / SSO Enabled</span>
+                <span className="text-cyan-400 font-bold">RBAC Enforced</span>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3 font-sans text-slate-800 font-bold">
-                  <FileCheck className="w-4 h-4 text-emerald-600" />
+              <div className="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-3 font-sans text-slate-200 font-bold">
+                  <FileCheck className="w-4 h-4 text-teal-400" />
                   <span>Singapore PDPA Framework</span>
                 </div>
-                <span className="text-emerald-700 font-bold">Aligned & Audited</span>
+                <span className="text-teal-400 font-bold">Data Privacy Aligned</span>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between">
-                <div className="flex items-center gap-3 font-sans text-slate-800 font-bold">
-                  <Server className="w-4 h-4 text-cyan-600" />
-                  <span>Automated Cloud Backups</span>
+              <div className="p-4 bg-slate-950/80 rounded-2xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center gap-3 font-sans text-slate-200 font-bold">
+                  <Server className="w-4 h-4 text-sky-400" />
+                  <span>Cloud Storage Redundancy</span>
                 </div>
-                <span className="text-cyan-700 font-bold">Daily Redundant</span>
+                <span className="text-sky-400 font-bold">Daily Backups</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Security Pillars Narrative */}
+          {/* Right Column: Audit Trail / Security Events */}
           <div className="lg:col-span-6 space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-              Complete data privacy and permission controls.
-            </h3>
+            <div className="space-y-2">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                Real-time security audit log &amp; event tracking.
+              </h3>
+              <p className="text-sm text-slate-600">
+                Every sensitive HR and payroll operation creates an immutable, timestamped audit log entry.
+              </p>
+            </div>
             
-            <p className="text-base text-slate-600 leading-relaxed">
-              Maintain granular control over who can view, edit, and export statutory payroll and personal employee information.
-            </p>
-
-            <div className="space-y-4 pt-2">
-              {securityPillars.map((sp, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900">{sp.title}</h4>
-                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{sp.desc}</p>
+            {/* Audit log events container */}
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3 font-mono text-xs">
+              <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2 font-sans">
+                Sample Audit Log Stream (DEMO DATA)
+              </div>
+              
+              {[
+                { time: '10:42:15 AM', event: 'Payroll access verified', user: 'Admin (TW)', status: 'Success', color: 'text-emerald-700 bg-emerald-100 border-emerald-200' },
+                { time: '10:15:02 AM', event: 'Admin login recorded', user: 'HR Lead (NH)', status: 'Logged', color: 'text-blue-700 bg-blue-100 border-blue-200' },
+                { time: '09:48:30 AM', event: 'Employee record updated', user: 'System', status: 'Updated', color: 'text-teal-700 bg-teal-100 border-teal-200' },
+                { time: '09:05:12 AM', event: 'Permission change logged', user: 'SuperAdmin', status: 'Audited', color: 'text-purple-700 bg-purple-100 border-purple-200' }
+              ].map((log, idx) => (
+                <div key={idx} className="p-3 bg-white rounded-xl border border-slate-200/90 flex items-center justify-between gap-3 shadow-xs">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-[10px] text-slate-400 flex-shrink-0">{log.time}</span>
+                    <span className="font-bold text-slate-900 font-sans text-xs truncate">{log.event}</span>
                   </div>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className="text-[10px] text-slate-500 font-sans">{log.user}</span>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${log.color}`}>
+                      {log.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-2.5 pt-1">
+              {securityPillars.map((sp, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-xs text-slate-700 font-semibold">{sp.title}</span>
                 </div>
               ))}
             </div>

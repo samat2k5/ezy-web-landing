@@ -15,7 +15,18 @@ export const AiSection: React.FC = () => {
     },
     {
       id: 'q2',
-      question: 'Show employees with pending leave approvals.',
+      question: 'Check CPF calculations',
+      responseTitle: 'August 2026 CPF Calculation Audit Summary:',
+      responseItems: [
+        'Total Employee CPF (rounded down): $28,450.00',
+        'Total Employer CPF (rounded to nearest dollar): $24,180.00',
+        'Employment Pass Holders: 2 staff correctly marked CPF Exempt.',
+        '2026 OW Ceiling ($8,000) applied across senior staff.'
+      ]
+    },
+    {
+      id: 'q3',
+      question: 'Show pending leave',
       responseTitle: '2 pending leave requests requiring manager action:',
       responseItems: [
         'Ahmad Farhan: Annual Leave (22 Aug - 24 Aug, 3 Days) - Pending Finance Manager.',
@@ -23,14 +34,13 @@ export const AiSection: React.FC = () => {
       ]
     },
     {
-      id: 'q3',
-      question: 'Check CPF calculations for this payroll.',
-      responseTitle: 'August 2026 CPF Calculation Audit Summary:',
+      id: 'q4',
+      question: 'Find payroll anomalies',
+      responseTitle: 'AI Anomaly Check Completed (0 Critical Blockers):',
       responseItems: [
-        'Total Employee CPF (rounded down): $28,450.00',
-        'Total Employer CPF (rounded to nearest dollar): $24,180.00',
-        'Employment Pass Holders: 2 staff correctly marked CPF Exempt.',
-        '2026 OW Ceiling ($8,000) applied across 4 senior staff.'
+        'Overtime variance within +5% threshold.',
+        'Bank GIRO details verified for all active employees.',
+        'No duplicate NRIC / FIN entries detected.'
       ]
     }
   ];

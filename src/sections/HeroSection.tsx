@@ -332,37 +332,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
 
             {/* Floating notification cards */}
             <div className="absolute top-20 -left-6 z-20 animate-float-slow hidden xl:block">
-              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-emerald-200/60 flex items-center gap-3 min-w-[200px]">
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-emerald-200/80 flex items-center gap-3 min-w-[210px]">
                 <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-800">Payroll Batch Approved</div>
-                  <div className="text-[10px] text-slate-500">July 2026 · 247 employees</div>
+                  <div className="text-xs font-bold text-slate-900">Payroll Batch Approved</div>
+                  <div className="text-[10px] text-emerald-700 font-medium">Jul 2026 · 247 employees</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>
 
             <div className="absolute top-48 -right-4 lg:-right-8 z-20 animate-float hidden lg:block" style={{ animationDelay: '1.5s' }}>
-              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-sky-200/60 flex items-center gap-3 min-w-[180px]">
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-sky-200/80 flex items-center gap-3 min-w-[200px]">
                 <div className="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4 text-sky-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-800">203 Clocked In</div>
-                  <div className="text-[10px] text-slate-500">96.8% attendance rate</div>
+                  <div className="text-xs font-bold text-slate-900">Attendance Recorded</div>
+                  <div className="text-[10px] text-sky-700 font-medium">203 Clocked In · 96.8%</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>
 
             <div className="absolute top-1/2 -left-4 z-20 animate-float-slow hidden xl:block" style={{ animationDelay: '2.5s' }}>
-              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-violet-200/60 flex items-center gap-3 min-w-[190px]">
+              <div className="glass-panel-light rounded-xl px-4 py-3 shadow-editorial border border-violet-200/80 flex items-center gap-3 min-w-[200px]">
                 <div className="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-4 h-4 text-violet-600" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-800">AI Anomaly Checked</div>
-                  <div className="text-[10px] text-slate-500">No issues found · July 2026</div>
+                  <div className="text-xs font-bold text-slate-900">AI Anomaly Checked</div>
+                  <div className="text-[10px] text-violet-700 font-medium">0 Anomalies · Verified</div>
+                  <span className="text-[9px] font-mono text-slate-400 block mt-0.5">DEMO DATA</span>
                 </div>
               </div>
             </div>

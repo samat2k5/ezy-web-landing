@@ -59,7 +59,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Xero Accounting',
       cat: 'Finance & Ledger Export',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: XeroIcon,
       bgFrom: 'from-sky-50',
       bgTo: 'to-sky-100',
@@ -71,7 +71,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'QuickBooks Online',
       cat: 'Accounting Sync',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: QuickBooksIcon,
       bgFrom: 'from-green-50',
       bgTo: 'to-emerald-100',
@@ -83,7 +83,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Microsoft 365',
       cat: 'Single Sign-On & Calendar',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: Microsoft365Icon,
       bgFrom: 'from-orange-50',
       bgTo: 'to-orange-100',
@@ -95,7 +95,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Google Workspace',
       cat: 'Identity & SSO',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: GoogleIcon,
       bgFrom: 'from-blue-50',
       bgTo: 'to-indigo-100',
@@ -107,7 +107,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Slack',
       cat: 'Leave & Attendance Alerts',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: SlackIcon,
       bgFrom: 'from-purple-50',
       bgTo: 'to-pink-100',
@@ -119,7 +119,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Microsoft Teams',
       cat: 'Notifications & ESS',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: TeamsIcon,
       bgFrom: 'from-indigo-50',
       bgTo: 'to-indigo-100',
@@ -131,7 +131,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Biometric Terminals',
       cat: 'Hardware Clock-In Sync',
-      status: 'AVAILABLE',
+      status: 'Integration-ready',
       icon: Cpu,
       bgFrom: 'from-teal-50',
       bgTo: 'to-cyan-100',
@@ -145,7 +145,7 @@ export const IntegrationsSection: React.FC = () => {
     {
       name: 'Developer REST API',
       cat: 'Custom Integrations',
-      status: 'COMING SOON',
+      status: 'Custom Endpoint',
       icon: Code2,
       bgFrom: 'from-amber-50',
       bgTo: 'to-yellow-100',
