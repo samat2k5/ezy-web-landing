@@ -63,6 +63,7 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
       phone,
       message,
       modules, // optional array
+      preferredDate, // optional date
       preferredContact, // 'email', 'whatsapp', 'either'
       website_url // HONEYPOT
     } = req.body;
@@ -127,6 +128,7 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     const safePreferredContact = escapeHtml(pContact.charAt(0).toUpperCase() + pContact.slice(1));
     const safeMessage = escapeHtml(message || 'No additional message');
     const safeModules = Array.isArray(modules) ? escapeHtml(modules.join(', ')) : 'None';
+    const safePreferredDate = escapeHtml(preferredDate || 'Not specified');
 
     // 3. Prepare Internal Email
     const isDemo = type === 'demo';
@@ -150,7 +152,10 @@ app.post('/api/leads', apiLimiter, async (req, res) => {
     `;
 
     if (isDemo) {
-      internalHtml += `<p><strong>Modules of Interest:</strong> ${safeModules}</p>`;
+      internalHtml += `<p><strong>Modules You Wish to Explore:</strong> ${safeModules}</p>`;
+      if (preferredDate) {
+        internalHtml += `<p><strong>Preferred Date:</strong> ${safePreferredDate}</p>`;
+      }
       internalHtml += `<p><strong>Message:</strong><br/>${safeMessage.replace(/&#10;|\n/g, '<br/>')}</p>`;
     }
 

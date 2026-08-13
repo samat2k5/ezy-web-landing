@@ -70,6 +70,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
         preferredContact: String(formData.preferredContact || 'email'),
         message: String(formData.notes || ''),
         modules: Array.isArray(formData.modules) ? formData.modules.map(String) : [],
+        preferredDate: String(formData.preferredDate || ''),
         website_url: '' // Will be empty if legit
       };
 
@@ -297,12 +298,15 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {[
+                    'Core HR',
                     'Singapore Payroll (CPF/IR8A)',
                     'Time & Attendance',
                     'Leave Management',
                     'Claims & Expenses',
+                    'Employee Self Service',
+                    'Management Intelligence',
                     'AI HR Assistant',
-                    'Document Vault'
+                    'Security & PDPA'
                   ].map((mod) => {
                     const isSelected = formData.modules.includes(mod);
                     return (

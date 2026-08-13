@@ -129,7 +129,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
           {/* Large tile — Core HR */}
           <div
             className={`md:col-span-2 md:row-span-2 group relative ${modules[0].bg} ${modules[0].border} border rounded-3xl p-7 lg:p-9 cursor-pointer hover:shadow-editorial transition-all duration-300 overflow-hidden`}
-            onClick={() => onSelectModule(modules[0].id)}
+            onClick={() => onSelectModule('Core HR')}
           >
             <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${modules[0].color} opacity-10 rounded-full blur-3xl`} />
             <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${modules[0].color} flex items-center justify-center mb-5 shadow-lg`}>
@@ -161,7 +161,7 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
           {/* Payroll large tile */}
           <div
             className={`md:col-span-2 group relative ${modules[3].bg} ${modules[3].border} border rounded-3xl p-6 lg:p-7 cursor-pointer hover:shadow-editorial transition-all duration-300 overflow-hidden`}
-            onClick={() => onSelectModule(modules[3].id)}
+            onClick={() => onSelectModule('Singapore Payroll (CPF/IR8A)')}
           >
             <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${modules[3].color} opacity-10 rounded-full blur-3xl`} />
             <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${modules[3].color} flex items-center justify-center mb-4 shadow-lg`}>
@@ -188,7 +188,20 @@ export const PlatformOverview: React.FC<PlatformOverviewProps> = ({ onSelectModu
               <div
                 key={mod.id}
                 className={`group relative ${mod.bg} ${mod.border} border rounded-3xl p-5 cursor-pointer hover:shadow-editorial transition-all duration-300 overflow-hidden`}
-                onClick={() => onSelectModule(mod.id)}
+                onClick={() => {
+                  let modalModName = mod.title;
+                  switch (mod.id) {
+                    case 'core-hr': modalModName = 'Core HR'; break;
+                    case 'payroll': modalModName = 'Singapore Payroll (CPF/IR8A)'; break;
+                    case 'attendance': modalModName = 'Time & Attendance'; break;
+                    case 'leave': modalModName = 'Leave Management'; break;
+                    case 'ai': modalModName = 'AI HR Assistant'; break;
+                    case 'ess': modalModName = 'Employee Self Service'; break;
+                    case 'analytics': modalModName = 'Management Intelligence'; break;
+                    case 'security': modalModName = 'Security & PDPA'; break;
+                  }
+                  onSelectModule(modalModName);
+                }}
               >
                 <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${mod.color} flex items-center justify-center mb-3 shadow-md`}>
                   <Icon className="w-4.5 h-4.5 text-white" />
