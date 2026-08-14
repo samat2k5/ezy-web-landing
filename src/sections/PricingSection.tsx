@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle2, ArrowRight, ShieldCheck, Building2, MessageSquare } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface PricingSectionProps {
   onOpenDemo: (planId?: 'general' | 'essential' | 'professional' | 'business') => void;
@@ -37,7 +38,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Email & Helpdesk Support',
       ],
       ctaText: 'Request Free Trial',
-      onCtaClick: () => onOpenTrial('essential')
+      onCtaClick: () => {
+        trackEvent('Pricing CTA Click', { source: 'pricing', plan: 'essential' });
+        trackEvent('Trial CTA Click', { source: 'pricing', plan: 'essential' });
+        trackEvent('Plan Selected', { plan: 'essential' });
+        onOpenTrial('essential');
+      }
     },
     {
       id: 'professional',
@@ -67,7 +73,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Priority Singapore Support',
       ],
       ctaText: 'Request Free Trial',
-      onCtaClick: () => onOpenTrial('professional')
+      onCtaClick: () => {
+        trackEvent('Pricing CTA Click', { source: 'pricing', plan: 'professional' });
+        trackEvent('Trial CTA Click', { source: 'pricing', plan: 'professional' });
+        trackEvent('Plan Selected', { plan: 'professional' });
+        onOpenTrial('professional');
+      }
     },
     {
       id: 'business',
@@ -96,7 +107,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
         'Priority Support & Dedicated Onboarding',
       ],
       ctaText: 'Book a Demo',
-      onCtaClick: () => onOpenDemo('business')
+      onCtaClick: () => {
+        trackEvent('Pricing CTA Click', { source: 'pricing', plan: 'business' });
+        trackEvent('Demo CTA Click', { source: 'pricing', plan: 'business' });
+        trackEvent('Plan Selected', { plan: 'business' });
+        onOpenDemo('business');
+      }
     }
   ];
 
@@ -242,7 +258,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenDemo, onOp
             <div>
               <div className="text-xs font-bold text-slate-900">100+ employees?</div>
               <button
-                onClick={() => onOpenDemo('general')}
+                onClick={() => {
+                  trackEvent('Demo CTA Click', { source: 'pricing', plan: 'general' });
+                  onOpenDemo('general');
+                }}
                 className="text-xs text-emerald-700 font-bold hover:text-emerald-900 transition-colors"
               >
                 Talk to us about volume pricing →

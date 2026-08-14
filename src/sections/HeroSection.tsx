@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { DEMO_DASHBOARD_STATS, DEMO_PAYROLL_EMPLOYEES } from '../data/demoData';
 import { getLogoPath, handleImageError } from '../utils/logoHelper';
+import { trackEvent } from '../utils/analytics';
 
 interface HeroSectionProps {
   onOpenDemo: () => void;
@@ -66,14 +67,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemo, onOpenTria
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
-                onClick={onOpenDemo}
+                onClick={() => {
+                  trackEvent('Demo CTA Click', { source: 'hero' });
+                  onOpenDemo();
+                }}
                 className="group flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-sky-600 via-cyan-600 to-teal-600 hover:from-sky-700 hover:to-teal-700 text-white font-bold rounded-2xl text-[15px] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Book a Free Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button
-                onClick={onOpenTrial}
+                onClick={() => {
+                  trackEvent('Trial CTA Click', { source: 'hero' });
+                  onOpenTrial();
+                }}
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-white/90 hover:bg-white text-slate-800 font-semibold rounded-2xl text-[15px] border border-slate-200 shadow-sm transition-all hover:shadow-md backdrop-blur-sm"
               >
                 Start Free Trial

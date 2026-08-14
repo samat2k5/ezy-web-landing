@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { getLogoPath, handleImageError } from '../utils/logoHelper';
+import { trackEvent } from '../utils/analytics';
 
 interface FinalCtaSectionProps {
   onOpenDemo: () => void;
@@ -43,7 +44,10 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenDemo, on
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <button
-            onClick={onOpenDemo}
+            onClick={() => {
+              trackEvent('Demo CTA Click', { source: 'footer' });
+              onOpenDemo();
+            }}
             className="w-full sm:w-auto px-9 py-4.5 bg-gradient-to-r from-sky-500 via-cyan-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-slate-950 font-black rounded-2xl text-base shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-3"
           >
             <span>Book a Free Demo</span>
@@ -51,7 +55,10 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenDemo, on
           </button>
 
           <button
-            onClick={onOpenTrial}
+            onClick={() => {
+              trackEvent('Trial CTA Click', { source: 'footer' });
+              onOpenTrial();
+            }}
             className="w-full sm:w-auto px-9 py-4.5 bg-slate-900 hover:bg-slate-850 text-white font-bold rounded-2xl text-base border border-slate-700 shadow-sm transition-all flex items-center justify-center gap-2"
           >
             Start Free Trial

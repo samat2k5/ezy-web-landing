@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { X, CheckCircle2, Shield, ArrowRight } from 'lucide-react';
 import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
+import { trackEvent } from '../../utils/analytics';
 
 interface FreeTrialModalProps {
   isOpen: boolean;
@@ -75,6 +76,7 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
         throw new Error(data.error || 'Failed to submit request. Please try again or contact support.');
       }
 
+      trackEvent('Trial Submitted', { plan: selectedPlan || 'general' });
       setSubmitted(true);
     } catch (err: any) {
       setSubmitError(err.message || 'We couldn\'t submit your request right now. Please try again.');

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { X, CheckCircle2, Calendar, Users, Building, Mail, Phone, User, Sparkles } from 'lucide-react';
+import { trackEvent } from '../../utils/analytics';
 import { DemoFormData } from '../../types';
 import { useModalFocusTrap } from '../../utils/useModalFocusTrap';
 
@@ -92,6 +93,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
         throw new Error(data.error || 'Failed to submit request. Please try again or contact support.');
       }
 
+      trackEvent('Demo Submitted', { plan: selectedPlan || 'general' });
       setSubmitted(true);
     } catch (err: any) {
       setSubmitError(err.message || 'We couldn\'t submit your request right now. Please try again.');

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar as CalendarIcon, CheckCircle2, ShieldCheck, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface LeaveSectionProps {
   onOpenDemo?: () => void;
@@ -130,7 +131,10 @@ export const LeaveSection: React.FC<LeaveSectionProps> = ({ onOpenDemo }) => {
 
             <div className="pt-4">
               <button
-                onClick={onOpenDemo}
+                onClick={() => {
+                  trackEvent('Demo CTA Click', { source: 'features' });
+                  if (onOpenDemo) onOpenDemo();
+                }}
                 className="px-6 py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center gap-2"
               >
                 Explore Leave Module <ArrowRight className="w-4 h-4" />

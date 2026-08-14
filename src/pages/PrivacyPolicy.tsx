@@ -51,6 +51,9 @@ export const PrivacyPolicy: React.FC = () => {
         <p>
           <strong>Purpose:</strong> We use this information to respond to your enquiry, arrange requested demonstrations or trials, provide related service communications, prevent abuse, and maintain the security of our services. We will use contact information for marketing communications only where permitted by applicable law and, where required, with the appropriate consent. We do not sell your contact information to third parties.
         </p>
+        <p>
+          <strong>Website Analytics:</strong> We use privacy-friendly, cookie-less website analytics to understand aggregated usage and interactions on our public website. We do not intentionally transmit form contents or directly identifying information through our analytics events.
+        </p>
 
         <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">3. Data Processed within the Platform (hr.ezy.sg)</h2>
         <p>

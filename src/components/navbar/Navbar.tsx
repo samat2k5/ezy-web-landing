@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, ChevronRight } from 'lucide-react';
 import { getLogoPath, handleImageError } from '../../utils/logoHelper';
 import { Link } from '../Link';
+import { trackEvent } from '../../utils/analytics';
 
 interface NavbarProps {
   onOpenDemo: () => void;
@@ -75,7 +76,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
             </a>
 
             <button
-              onClick={onOpenDemo}
+              onClick={() => {
+                trackEvent('Demo CTA Click', { source: 'navbar' });
+                onOpenDemo();
+              }}
               className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-slate-950 font-extrabold rounded-xl text-xs lg:text-sm shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
             >
               <span>Book a Demo</span>
@@ -129,6 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
+                trackEvent('Demo CTA Click', { source: 'navbar' });
                 onOpenDemo();
               }}
               className="w-full py-3 bg-gradient-to-r from-emerald-500 to-blue-600 text-slate-950 font-extrabold rounded-xl text-sm shadow-md flex items-center justify-center gap-2"

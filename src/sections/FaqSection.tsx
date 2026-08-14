@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FAQ_DATA } from '../data/faqData';
 import { ChevronDown, Search, HelpCircle, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface FaqSectionProps {
   onOpenDemo: () => void;
@@ -80,7 +81,10 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenDemo }) => {
               <h4 className="text-sm font-bold text-slate-900">Still have questions?</h4>
               <p className="text-xs text-slate-600">Our Singapore HR tech team is here to assist.</p>
               <button
-                onClick={onOpenDemo}
+                onClick={() => {
+                  trackEvent('Demo CTA Click', { source: 'other' });
+                  onOpenDemo();
+                }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-xl transition-all shadow-md mt-1"
               >
                 Speak to a Specialist <ArrowRight className="w-4 h-4" />

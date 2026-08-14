@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Building2, UserCheck, Calculator, Briefcase, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 interface PersonaSelectorProps {
   onOpenDemo: () => void;
@@ -153,7 +154,10 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({ onOpenDemo, on
 
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <button
-                  onClick={onOpenDemo}
+                  onClick={() => {
+                    trackEvent('Demo CTA Click', { source: 'features' });
+                    onOpenDemo();
+                  }}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-md"
                 >
                   {activePersona.ctaPrimaryText} <ArrowRight className="w-4 h-4" />
