@@ -412,7 +412,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
             )}
 
             <p className="text-[10px] text-slate-400 leading-tight">
-              *Disclaimer: This interactive preview illustrates standard 2026 Singapore statutory CPF Ordinary Wage rates, Skills Development Levy (SDL) bounds ($2.00 min, $11.25 max), and demonstration SHG rates. Actual payroll output depends on specific employee citizenship dates, Voluntary CPF contributions, and Additional Wage (AW) ceilings. This tool is provided for informational and estimation purposes and does not constitute legal, tax, accounting or government advice. Customers remain responsible for reviewing employee inputs, payroll results and applicable statutory filing or payment obligations.
+              *Disclaimer: This interactive preview illustrates standard 2026 Singapore statutory CPF Ordinary Wage rates, Skills Development Levy (SDL) bounds ($2.00 min, $11.25 max), and demonstration SHG rates. Actual payroll output depends on specific employee citizenship dates, Voluntary CPF contributions, and Additional Wage (AW) ceilings.
             </p>
           </div>
 

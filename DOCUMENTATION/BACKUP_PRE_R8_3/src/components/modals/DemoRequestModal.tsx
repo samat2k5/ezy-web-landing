@@ -354,22 +354,17 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({
                 </div>
               )}
 
-              <div className="pt-4 border-t border-slate-100 mt-2">
-                <p className="text-[11px] text-slate-500 mb-4 leading-relaxed">
-                  By submitting this form, you acknowledge that ezyHR may use the information provided to respond to your request in accordance with our <a href="/privacy-policy" className="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500 font-medium">
-                    🔒 No obligation. PDPA aligned data privacy.
-                  </span>
-                  <button
-                    type="submit"
+              <div className="pt-2 flex items-center justify-between">
+                <span className="text-xs text-slate-500">
+                  🔒 No obligation. PDPA aligned data privacy.
+                </span>
+                <button
+                  type="submit"
                   disabled={isSubmitting}
                   className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? 'Sending...' : 'Book Free Demo'}
                 </button>
-              </div>
               </div>
             </form>
           )}

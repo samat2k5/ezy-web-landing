@@ -220,10 +220,6 @@ export const FreeTrialModal: React.FC<FreeTrialModalProps> = ({ isOpen, onClose,
                 </p>
               </div>
 
-              <p className="text-[11px] text-slate-500 text-center px-2 leading-relaxed">
-                By submitting this form, you acknowledge that ezyHR may use the information provided to respond to your request in accordance with our <a href="/privacy-policy" className="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-              </p>
-
               {/* Hidden Honeypot Field */}
               <div className="hidden" aria-hidden="true">
                 <label>Do not fill this out if you are human: <input type="text" name="website_url" ref={honeypotRef} tabIndex={-1} autoComplete="off" /></label>

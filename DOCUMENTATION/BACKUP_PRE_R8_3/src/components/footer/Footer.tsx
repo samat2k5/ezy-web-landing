@@ -72,9 +72,8 @@ export const Footer: React.FC = () => {
               </li>
               <li><a href="#pricing" className="text-slate-300 hover:text-white transition-colors">SME Plans & Pricing</a></li>
               <li><a href="#faq" className="text-slate-300 hover:text-white transition-colors">Statutory FAQ</a></li>
-              <li><a href="/privacy-policy" className="text-slate-300 hover:text-white transition-colors">Privacy Policy (PDPA)</a></li>
-              <li><a href="/terms-of-service" className="text-slate-300 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="/payment-refund-policy" className="text-slate-300 hover:text-white transition-colors">Payment & Refund Policy</a></li>
+              <li><span className="text-slate-400">Privacy Policy (PDPA)</span></li>
+              <li><span className="text-slate-400">Terms of Service</span></li>
             </ul>
           </div>
 
