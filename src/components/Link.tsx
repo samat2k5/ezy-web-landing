@@ -24,7 +24,19 @@ export const Link: React.FC<LinkProps> = ({ href, children, onClick, ...props })
       window.history.pushState({}, '', href);
       const navEvent = new PopStateEvent('popstate');
       window.dispatchEvent(navEvent);
-      window.scrollTo(0, 0);
+      
+      const [pathname, hash] = href.split('#');
+      if (hash) {
+        // Wait for next tick to ensure App.tsx has re-rendered the LandingPage
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 0);
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
   };
 

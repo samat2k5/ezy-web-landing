@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, ChevronRight } from 'lucide-react';
 import { getLogoPath, handleImageError } from '../../utils/logoHelper';
+import { Link } from '../Link';
 
 interface NavbarProps {
   onOpenDemo: () => void;
@@ -20,13 +21,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
   }, []);
 
   const navLinks = [
-    { name: 'Product', href: '#platform' },
-    { name: 'Features', href: '#features' },
-    { name: 'Payroll', href: '#payroll' },
-    { name: 'AI', href: '#ai' },
-    { name: 'Security', href: '#security' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'Product', href: '/#platform' },
+    { name: 'Features', href: '/#features' },
+    { name: 'Payroll', href: '/#payroll' },
+    { name: 'AI', href: '/#ai' },
+    { name: 'Security', href: '/#security' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'FAQ', href: '/#faq' },
   ];
 
   return (
@@ -40,25 +41,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
         <div className="flex items-center justify-between">
 
           {/* Official ezyHR Light Logo Variant */}
-          <a href="#" className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-1 transition-transform hover:scale-[1.01]">
+          <Link href="/" className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg p-1 transition-transform hover:scale-[1.01]">
             <img
               src={getLogoPath('fullLight')}
               onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo.png')}
               alt="ezyHR Singapore HRMS & Statutory Payroll"
               className="h-9 sm:h-10 w-auto object-contain"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-xs lg:text-sm font-semibold text-slate-700 hover:text-emerald-600 transition-colors px-3 py-2 rounded-xl hover:bg-slate-100/80"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -103,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
         <div id="mobile-nav-drawer" className="md:hidden bg-white/98 backdrop-blur-xl border-b border-slate-200/90 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fadeIn">
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -111,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo, onOpenTrial }) => {
               >
                 <span>{link.name}</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
-              </a>
+              </Link>
             ))}
           </nav>
 

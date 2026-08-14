@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Tag } from 'lucide-react';
+import { Link } from './Link';
 
 export const PricingTeaser: React.FC = () => {
   return (
@@ -18,12 +19,12 @@ export const PricingTeaser: React.FC = () => {
               </div>
             </div>
           </div>
-          <a
-            href="#pricing"
+          <Link
+            href="/#pricing"
             className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 hover:text-emerald-900 transition-colors whitespace-nowrap group"
           >
             View Plans <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

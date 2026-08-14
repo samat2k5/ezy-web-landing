@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calculator, DollarSign, FileText, CheckCircle2, Shield, Sparkles, Info, HelpCircle } from 'lucide-react';
 import { DEMO_PAYROLL_EMPLOYEES, SampleEmployeePayroll } from '../data/demoData';
+import { Link } from '../components/Link';
 
 interface PayrollSimulatorSectionProps {
   onOpenPayslipModal: (emp: SampleEmployeePayroll) => void;
@@ -431,12 +432,12 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
               Plans from S$4 / employee / month, GST included.
             </p>
           </div>
-          <a
-            href="#pricing"
+          <Link
+            href="/#pricing"
             className="w-full sm:w-auto sm:flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-md"
           >
             Explore ezyHR Plans →
-          </a>
+          </Link>
         </div>
 
       </div>

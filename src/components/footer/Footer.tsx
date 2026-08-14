@@ -1,5 +1,6 @@
 import React from 'react';
 import { getLogoPath, handleImageError } from '../../utils/logoHelper';
+import { Link } from '../Link';
 
 export const Footer: React.FC = () => {
   return (
@@ -10,14 +11,14 @@ export const Footer: React.FC = () => {
 
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="#" className="inline-block">
+            <Link href="/" className="inline-block">
               <img
                 src={getLogoPath('fullDark')}
                 onError={(e) => handleImageError(e, 'Logos/ezyhr-full-logo-dark.png')}
                 alt="ezyHR Singapore HRMS Platform"
                 className="h-10 w-auto object-contain"
               />
-            </a>
+            </Link>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm font-medium">
               ezyHR is an intelligent cloud-based HRMS and statutory payroll platform built specifically for Singapore employment requirements.
@@ -34,12 +35,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Platform & Modules</h4>
             <ul className="space-y-2 text-xs font-medium">
-              <li><a href="#platform" className="text-slate-300 hover:text-emerald-400 transition-colors">Core HR Master File</a></li>
-              <li><a href="#features" className="text-slate-300 hover:text-emerald-400 transition-colors">Attendance & GPS Radar</a></li>
-              <li><a href="#payroll" className="text-slate-300 hover:text-emerald-400 transition-colors">Leave Management</a></li>
-              <li><a href="#payroll" className="text-slate-300 hover:text-emerald-400 transition-colors">Singapore Statutory Payroll</a></li>
-              <li><a href="#ai" className="text-slate-300 hover:text-purple-400 transition-colors">AI HR Assistant</a></li>
-              <li><a href="#security" className="text-slate-300 hover:text-emerald-400 transition-colors">PDPA Aligned Security</a></li>
+              <li><Link href="/#platform" className="text-slate-300 hover:text-emerald-400 transition-colors">Core HR Master File</Link></li>
+              <li><Link href="/#features" className="text-slate-300 hover:text-emerald-400 transition-colors">Attendance & GPS Radar</Link></li>
+              <li><Link href="/#payroll" className="text-slate-300 hover:text-emerald-400 transition-colors">Leave Management</Link></li>
+              <li><Link href="/#payroll" className="text-slate-300 hover:text-emerald-400 transition-colors">Singapore Statutory Payroll</Link></li>
+              <li><Link href="/#ai" className="text-slate-300 hover:text-purple-400 transition-colors">AI HR Assistant</Link></li>
+              <li><Link href="/#security" className="text-slate-300 hover:text-emerald-400 transition-colors">PDPA Aligned Security</Link></li>
             </ul>
           </div>
 
@@ -70,11 +71,11 @@ export const Footer: React.FC = () => {
                   Official Domain (ezy.sg)
                 </a>
               </li>
-              <li><a href="#pricing" className="text-slate-300 hover:text-white transition-colors">SME Plans & Pricing</a></li>
-              <li><a href="#faq" className="text-slate-300 hover:text-white transition-colors">Statutory FAQ</a></li>
-              <li><a href="/privacy-policy" className="text-slate-300 hover:text-white transition-colors">Privacy Policy (PDPA)</a></li>
-              <li><a href="/terms-of-service" className="text-slate-300 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="/payment-refund-policy" className="text-slate-300 hover:text-white transition-colors">Payment & Refund Policy</a></li>
+              <li><Link href="/#pricing" className="text-slate-300 hover:text-white transition-colors">SME Plans & Pricing</Link></li>
+              <li><Link href="/#faq" className="text-slate-300 hover:text-white transition-colors">Statutory FAQ</Link></li>
+              <li><Link href="/privacy-policy" className="text-slate-300 hover:text-white transition-colors">Privacy Policy (PDPA)</Link></li>
+              <li><Link href="/terms-of-service" className="text-slate-300 hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link href="/payment-refund-policy" className="text-slate-300 hover:text-white transition-colors">Payment & Refund Policy</Link></li>
             </ul>
           </div>
 
