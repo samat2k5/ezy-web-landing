@@ -10,11 +10,9 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
   onOpenPayslipModal
 }) => {
   const [salaryInput, setSalaryInput] = useState<number>(5500);
-  const [ageGroup, setAgeGroup] = useState<'under35' | '35to45' | '45to50' | '50to55' | '55to60' | '60to65' | '65to70' | 'above70'>('under35');
+  const [ageGroup, setAgeGroup] = useState<'under55' | '55to60' | '60to65' | 'above65'>('under55');
   const [residency, setResidency] = useState<'SC' | 'EP'>('SC');
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
-
-  const formatSGD = (val: number) => val.toLocaleString('en-SG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   // Statutory Constants (2026 Singapore Rules) - 100% UNTOUCHED
   const CPF_OW_CEILING_2026 = 8000;
@@ -36,7 +34,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
     } else if (ageGroup === '60to65') {
       empRate = 0.095;
       emprRate = 0.09;
-    } else if (ageGroup === '65to70' || ageGroup === 'above70') {
+    } else if (ageGroup === 'above65') {
       empRate = 0.05;
       emprRate = 0.075;
     }
@@ -57,60 +55,6 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
   };
 
   const currentCalc = calculateCpf();
-  const totalCpf = currentCalc.empCpf + currentCalc.emprCpf;
-
-  const calculateCpfAllocation = (totalCpf: number, ageGroupId: string) => {
-    if (totalCpf === 0) return { oa: 0, saOrRa: 0, ma: 0, accountType: 'SA' };
-
-    let oaRatio = 0, saRaRatio = 0, maRatio = 0;
-    let accountType = 'SA';
-
-    if (ageGroupId === 'under35') {
-      oaRatio = 0.6217;
-      saRaRatio = 0.1621;
-      maRatio = 0.2162;
-    } else if (ageGroupId === '35to45') {
-      oaRatio = 0.5677;
-      saRaRatio = 0.1891;
-      maRatio = 0.2432;
-    } else if (ageGroupId === '45to50') {
-      oaRatio = 0.5136;
-      saRaRatio = 0.2162;
-      maRatio = 0.2702;
-    } else if (ageGroupId === '50to55') {
-      oaRatio = 0.4055;
-      saRaRatio = 0.3108;
-      maRatio = 0.2837;
-    } else if (ageGroupId === '55to60') {
-      oaRatio = 0.3530;
-      saRaRatio = 0.3382;
-      maRatio = 0.3088;
-      accountType = 'RA';
-    } else if (ageGroupId === '60to65') {
-      oaRatio = 0.1400;
-      saRaRatio = 0.4400;
-      maRatio = 0.4200;
-      accountType = 'RA';
-    } else if (ageGroupId === '65to70') {
-      oaRatio = 0.0607;
-      saRaRatio = 0.3030;
-      maRatio = 0.6363;
-      accountType = 'RA';
-    } else if (ageGroupId === 'above70') {
-      oaRatio = 0.0800;
-      saRaRatio = 0.0800;
-      maRatio = 0.8400;
-      accountType = 'RA';
-    }
-
-    const ma = Math.round(totalCpf * maRatio * 100) / 100;
-    const saOrRa = Math.round(totalCpf * saRaRatio * 100) / 100;
-    const oa = Math.round((totalCpf - ma - saOrRa) * 100) / 100;
-
-    return { oa, saOrRa, ma, accountType };
-  };
-
-  const allocation = calculateCpfAllocation(totalCpf, ageGroup);
 
   const tooltips = {
     empCpf: "Employee CPF: Deducted from employee salary based on statutory age tiers (up to $8,000 OW ceiling). CPF Board requires rounding down to nearest dollar.",
@@ -120,7 +64,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-deep-navy text-white relative overflow-hidden border-b border-slate-800">
+    <section className="py-24 lg:py-36 bg-deep-navy text-white relative overflow-hidden border-b border-slate-800">
       
       {/* Background radial glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -130,22 +74,22 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-10 lg:mb-12">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/60 text-cyan-400 text-xs font-black uppercase tracking-widest backdrop-blur-md">
             <Calculator className="w-3.5 h-3.5 text-cyan-400" /> Live Singapore Statutory Calculator
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-            Singapore CPF &amp; Payroll Calculator 2026
+            Test Singapore Payroll Calculations Live
           </h2>
           <p className="text-base sm:text-lg text-slate-300">
-            Estimate employee CPF, employer CPF, SDL, net pay and CPF account allocation using applicable 2026 Singapore CPF rates.
+            Adjust salary parameters below to see how ezyHR automates Singapore CPF, SDL, SHG deductions, and net salary calculations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
           
           {/* Controls Panel */}
-          <div className="lg:col-span-6 bg-slate-900/90 p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-5 shadow-product-ui backdrop-blur-xl">
+          <div className="lg:col-span-6 bg-slate-900/90 p-7 sm:p-9 rounded-3xl border border-slate-800 space-y-6 shadow-product-ui backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <h3 className="text-base font-extrabold text-white flex items-center gap-2">
                 Salary &amp; Statutory Inputs
@@ -160,7 +104,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
               <div className="flex justify-between items-center mb-3">
                 <label className="text-xs font-bold text-slate-300">Monthly Gross Salary (SGD)</label>
                 <span className="text-xl font-black text-cyan-400 font-mono">
-                  S${formatSGD(salaryInput)}
+                  ${salaryInput.toLocaleString()}
                 </span>
               </div>
               <input
@@ -181,17 +125,13 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
 
             {/* Age Tier Selection */}
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-2.5">Employee Age Group <span className="font-normal text-slate-400">(Employee / Employer Rates)</span></label>
+              <label className="block text-xs font-bold text-slate-300 mb-2.5">Employee Age Group</label>
               <div className="grid grid-cols-2 gap-2.5">
                 {[
-                  { id: 'under35', label: '35 & Below (20% / 17%)' },
-                  { id: '35to45', label: '35 to 45 (20% / 17%)' },
-                  { id: '45to50', label: '45 to 50 (20% / 17%)' },
-                  { id: '50to55', label: '50 to 55 (20% / 17%)' },
+                  { id: 'under55', label: '55 & Below (20% / 17%)' },
                   { id: '55to60', label: '55 to 60 (15% / 12%)' },
                   { id: '60to65', label: '60 to 65 (9.5% / 9%)' },
-                  { id: '65to70', label: '65 to 70 (5% / 7.5%)' },
-                  { id: 'above70', label: 'Above 70 (5% / 7.5%)' }
+                  { id: 'above65', label: 'Above 65 (5% / 7.5%)' }
                 ].map((tier) => (
                   <button
                     key={tier.id}
@@ -237,7 +177,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
           </div>
 
           {/* Results Display with Tooltips */}
-          <div className="lg:col-span-6 bg-slate-900/90 p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-5 shadow-product-ui backdrop-blur-xl">
+          <div className="lg:col-span-6 bg-slate-900/90 p-7 sm:p-9 rounded-3xl border border-slate-800 space-y-6 shadow-product-ui backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <h3 className="text-base font-extrabold text-white flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-cyan-400" /> Automated Statutory Breakdown
@@ -248,7 +188,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
             <div className="space-y-3">
               <div className="flex justify-between items-center p-3.5 bg-slate-950/70 rounded-xl border border-slate-800 text-xs">
                 <span className="text-slate-300 font-medium">Gross Monthly Salary:</span>
-                <span className="font-mono font-bold text-white text-sm">S${formatSGD(salaryInput)}</span>
+                <span className="font-mono font-bold text-white text-sm">${salaryInput.toFixed(2)}</span>
               </div>
 
               {/* Employee CPF with Tooltip */}
@@ -264,7 +204,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-red-400 text-sm">-S${formatSGD(currentCalc.empCpf)}</span>
+                  <span className="font-mono font-bold text-red-400 text-sm">-${currentCalc.empCpf.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'empCpf' && (
                   <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
@@ -286,7 +226,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-cyan-400 text-sm">+S${formatSGD(currentCalc.emprCpf)}</span>
+                  <span className="font-mono font-bold text-cyan-400 text-sm">+${currentCalc.emprCpf.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'emprCpf' && (
                   <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
@@ -308,7 +248,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                       <HelpCircle className="w-3.5 h-3.5" />
                     </button>
                   </span>
-                  <span className="font-mono font-bold text-slate-300 text-sm">+S${formatSGD(currentCalc.sdl)}</span>
+                  <span className="font-mono font-bold text-slate-300 text-sm">+${currentCalc.sdl.toFixed(2)}</span>
                 </div>
                 {activeTooltip === 'sdl' && (
                   <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
@@ -331,7 +271,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                         <HelpCircle className="w-3.5 h-3.5" />
                       </button>
                     </span>
-                    <span className="font-mono font-bold text-red-400 text-sm">-S$3.00</span>
+                    <span className="font-mono font-bold text-red-400 text-sm">-$3.00</span>
                   </div>
                   {activeTooltip === 'shg' && (
                     <div className="p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] mt-1.5 shadow-lg border border-slate-800">
@@ -347,7 +287,7 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
               <div className="flex justify-between items-center">
                 <div>
                   <span className="text-xs uppercase font-extrabold tracking-wider block opacity-90">Estimated Net Take-Home</span>
-                  <span className="text-2xl sm:text-3xl font-black font-mono mt-1 block">S${formatSGD(currentCalc.netPay)}</span>
+                  <span className="text-2xl sm:text-3xl font-black font-mono mt-1 block">${currentCalc.netPay.toFixed(2)}</span>
                 </div>
                 
                 <button
@@ -358,58 +298,6 @@ export const PayrollSimulatorSection: React.FC<PayrollSimulatorSectionProps> = (
                 </button>
               </div>
             </div>
-
-            {/* CPF CONTRIBUTION BREAKDOWN */}
-            {totalCpf > 0 && residency === 'SC' && (
-              <div className="mt-6 pt-5 border-t border-slate-800">
-                <div className="flex justify-between items-end mb-4">
-                  <div>
-                    <h4 className="text-sm font-extrabold text-white">CPF CONTRIBUTION BREAKDOWN</h4>
-                    <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1 cursor-pointer hover:text-cyan-400" onClick={() => setActiveTooltip(activeTooltip === 'cpfAlloc' ? null : 'cpfAlloc')}>
-                      <Info className="w-3 h-3" /> How CPF is allocated
-                    </p>
-                    {activeTooltip === 'cpfAlloc' && (
-                      <div className="mt-2 p-3 bg-slate-950 text-slate-200 rounded-xl text-[11px] shadow-lg border border-slate-800 relative z-20">
-                        CPF allocation depends on age. Members below/through age 55 receive allocation to SA. For members above age 55, the corresponding retirement allocation is shown as RA. MA supports healthcare savings. Calculations use applicable 2026 CPF allocation rates. Actual RA/OA treatment may depend on FRS status.
-                      </div>
-                    )}
-                  </div>
-                  <div className="text-right">
-                    <div className="text-[10px] text-slate-400 font-bold uppercase">Total CPF Contribution</div>
-                    <div className="text-lg font-black text-cyan-400 font-mono">S${formatSGD(totalCpf)}</div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">Ordinary Account</div>
-                      <div className="text-xs font-black text-white">OA</div>
-                    </div>
-                    <div className="text-sm font-bold text-cyan-400 font-mono mt-3">S${formatSGD(allocation.oa)}</div>
-                  </div>
-                  <div className="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">{allocation.accountType === 'SA' ? 'Special Account' : 'Retirement Account'}</div>
-                      <div className="text-xs font-black text-white">{allocation.accountType}{allocation.accountType === 'RA' ? '*' : ''}</div>
-                    </div>
-                    <div className="text-sm font-bold text-emerald-400 font-mono mt-3">S${formatSGD(allocation.saOrRa)}</div>
-                  </div>
-                  <div className="bg-slate-950/70 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-full">
-                    <div>
-                      <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">MediSave Account</div>
-                      <div className="text-xs font-black text-white">MA</div>
-                    </div>
-                    <div className="text-sm font-bold text-blue-400 font-mono mt-3">S${formatSGD(allocation.ma)}</div>
-                  </div>
-                </div>
-                {allocation.accountType === 'RA' && (
-                  <p className="text-[9px] text-slate-500 mt-3 leading-tight">
-                    *For members above age 55, the displayed amount reflects the standard CPF allocation ratio. Actual RA/OA allocation may vary where the applicable Full Retirement Sum has already been set aside.
-                  </p>
-                )}
-              </div>
-            )}
 
             <p className="text-[10px] text-slate-400 leading-tight">
               *Disclaimer: This interactive preview illustrates standard 2026 Singapore statutory CPF Ordinary Wage rates, Skills Development Levy (SDL) bounds ($2.00 min, $11.25 max), and demonstration SHG rates. Actual payroll output depends on specific employee citizenship dates, Voluntary CPF contributions, and Additional Wage (AW) ceilings.
